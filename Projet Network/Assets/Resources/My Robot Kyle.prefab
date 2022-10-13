@@ -95,8 +95,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 24.187643, y: 9.701064, z: 0.97004193}
-  m_Center: {x: 11.593817, y: 0.42518333, z: 0.014979121}
+  m_Size: {x: 24.187643, y: 9.701064, z: 0.91326094}
+  m_Center: {x: 11.593812, y: 0.42517924, z: 0.043369684}
 --- !u!1 &1687429672
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +719,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beams: {fileID: 1816694230}
   health: 1
+  PlayerUiPrefab: {fileID: 7319324534241497186, guid: c4cd3fd1eaf9bd44dbe4fd5f2a25c986,
+    type: 3}
 --- !u!114 &722504607988977999
 MonoBehaviour:
   m_ObjectHideFlags: 0

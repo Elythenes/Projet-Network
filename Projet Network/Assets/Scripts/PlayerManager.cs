@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using Photon.Pun.Demo.PunBasics;
+using Photon.Realtime;
 
 public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -14,6 +15,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     [Tooltip("The local player instance. Use this to know if the local player is represented in the scene")]
     public static GameObject LocalPlayerInstance;
+
+    [Tooltip("The Player's UI GameObject Prefab")] [SerializeField]
+    public GameObject PlayerUiPrefab;
     
     #region IPunObservable implementaion
 
@@ -54,6 +58,16 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Start()
     {
+        if (PlayerUiPrefab != null)
+        {
+            GameObject _uiGo = Instantiate(PlayerUiPrefab);
+            _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+        }
+        else
+        {
+            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab", this);
+        }
+
         CameraWork _cameraWork = this.gameObject.GetComponent<CameraWork>();
         
         if (_cameraWork != null)
@@ -161,6 +175,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             transform.position = new Vector3(0f, 5f, 0f);
         }
+
+        GameObject _uiGo = Instantiate(this.PlayerUiPrefab);
+        _uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
     }
     
     #if UNITY_5_4_OR_NEWER
