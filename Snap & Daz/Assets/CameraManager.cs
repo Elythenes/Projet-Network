@@ -3,24 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Photon.Pun;
+using Photon.Realtime;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
-    public float zoomSpeed;
     public Camera camera;
+    
+    [Header("Données à trouver")]
     [SerializeField] private LayerMask layerMask;
     [SerializeField] Transform player;
-    [SerializeField] float maxDistance;
     public GameObject ping;
-    public bool isCinematique;
-    public bool isMoving;
-    private float timeCiné;
-    private float timeCinéTimer;
+    
+    [Header("Données à changer")]
+    public float zoomSpeed;
     public float preferredDistance;
+    [Range(0.01f, 1.0f)] public float SmoothFactor = 0.5f;
+
+    [Header("Données passives / test")] 
+    public Vector3 cameraOffset;
+    public bool isMoving;
+    public bool isCinematique;
+    
     private Vector3 PlayerPos;
+    private float timeCinéTimer;
+    private float timeCiné;
 
     private void Awake()
     {
@@ -30,12 +39,17 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         PlayerPos = transform.position;
+        cameraOffset = transform.position - player.transform.position;
     }
 
     private void Update()
     {
+       
         if (!isCinematique)
         {
+            Vector3 newPos = player.transform.position + cameraOffset;
+            transform.position = Vector3.Slerp(transform.position,newPos,SmoothFactor);
+            
             if (camera.fieldOfView > 60)
             {
                 camera.fieldOfView = 60;
