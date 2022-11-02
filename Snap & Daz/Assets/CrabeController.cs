@@ -7,9 +7,19 @@ using UnityEngine;
 public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
 {
     public static GameObject LocalPlayerInstance;
+    public static CrabeController instance;
     [SerializeField] Rigidbody rb;
     [SerializeField] float speed;
-    
+    [SerializeField] float rotateSpeed;
+
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) //
     {
         if (stream.IsWriting)
@@ -36,18 +46,25 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveZ = Input.GetAxisRaw("Vertical");
         
-        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        //Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        Vector3 rotationMove = new Vector3(moveX, 0, moveZ);
+        rotationMove.Normalize();
 
         if (!CameraManager.instance.isCinematique)
         {
-            if (moveX > 0 && moveZ > 0)
+           
+            
+            if (rotationMove != Vector3.zero)
             {
-                rb.velocity += (move * speed/2 * Time.deltaTime);
+                rb.velocity += (rotationMove * speed * Time.deltaTime);
+                Quaternion rotateTo = Quaternion.LookRotation(-rotationMove,Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime);
             }
             else
             {
-                rb.velocity += (move * speed * Time.deltaTime);
-            }  
+                rb.velocity += (rotationMove * speed/2 * Time.deltaTime);
+               
+            }
         }
     }
 }
