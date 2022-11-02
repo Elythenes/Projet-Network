@@ -1,18 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class ConnectToServer : MonoBehaviour
+public class ConnectToServer : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TMP_InputField usernameInput;
+    public Button connectButton;
+    public TextMeshProUGUI buttonText;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (usernameInput.text.Length == 0)
+        {
+            connectButton.interactable = false;
+        }
+        else
+        {
+            connectButton.interactable = true;
+        }
+    }
+
+    public void OnClickConnect()
+    {
+        if (usernameInput.text.Length >= 1)
+        {
+            PhotonNetwork.NickName = usernameInput.text;
+            buttonText.text = "Connecting...";
+            PhotonNetwork.ConnectUsingSettings();
+        }
+    }
+
+    public override void OnConnectedToMaster()
+    {
+        SceneManager.LoadScene("Lobby");
     }
 }

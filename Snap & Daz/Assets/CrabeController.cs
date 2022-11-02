@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
-using UnityEditor.MPE;
 using UnityEngine;
 
 public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
