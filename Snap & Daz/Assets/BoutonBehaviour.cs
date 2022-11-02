@@ -15,6 +15,7 @@ public class BoutonBehaviour : MonoBehaviour
     public GameObject AssociatedDoor;
     public float HauteurOuverture;
     public float DureeOuverture;
+    public float TimeMoveCamera;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -48,7 +49,7 @@ public class BoutonBehaviour : MonoBehaviour
     void Bouton()
     {
         AssociatedDoor.transform.DOMove(AssociatedDoor.transform.position + new Vector3(0,HauteurOuverture,0), DureeOuverture);
-        CameraManager.instance.CinematiquePorte(AssociatedDoor,1f);
+        CameraManager.instance.CinematiquePorte(AssociatedDoor,TimeMoveCamera);
     }
 
 }
