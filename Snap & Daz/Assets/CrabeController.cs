@@ -57,7 +57,7 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
             if (rotationMove != Vector3.zero)
             {
                 rb.velocity += (rotationMove * speed * Time.deltaTime);
-                Quaternion rotateTo = Quaternion.LookRotation(-rotationMove,Vector3.up);
+                Quaternion rotateTo = Quaternion.LookRotation(rotationMove,Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime);
             }
             else
