@@ -40,7 +40,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if (createRoomInputField.text.Length >= 1)
         {
-            PhotonNetwork.CreateRoom(createRoomInputField.text, new RoomOptions() { MaxPlayers = 2 });
+            PhotonNetwork.CreateRoom(createRoomInputField.text, new RoomOptions() { MaxPlayers = 2, BroadcastPropsChangeToAll = true});
         }
     }
     
@@ -106,5 +106,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         UpdatePlayerList();
+    }
+
+    public void OnClickReadyButton()
+    {
+        
     }
 }

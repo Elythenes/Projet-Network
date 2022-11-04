@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b98b10e0-bcf0-40fe-8aba-18d22e5add15" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ConnectToServer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ConnectToServer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/LobbyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LobbyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Lobby.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/PlayerItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/PlayerItem.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Search.settings" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Search.settings" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667412264221</updated>
       <workItem from="1667412278787" duration="8287000" />
+      <workItem from="1667572280881" duration="6647000" />
     </task>
     <servers />
   </component>
