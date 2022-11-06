@@ -23,6 +23,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public PlayerItem playerItemPrefab;
     public Transform playerItemParent;
 
+    public GameObject playButton;
+    
+    private PlayerItem newPlayerItem;
+    private bool hasAPlayer;
+
     private void Start()
     {
         PhotonNetwork.JoinLobby();
@@ -34,6 +39,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         createButton.interactable = createRoomInputField.text.Length >= 1;
         joinButton.interactable = joinRoomInputField.text.Length >= 1;
+
+        if (!hasAPlayer) return;
+        if (newPlayerItem.player.CustomProperties.ContainsKey("isReady"))
+        {
+            playButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2 && (bool)PhotonNetwork.LocalPlayer.CustomProperties["isReady"]);
+        }
     }
 
     public void OnClickCreate()
@@ -58,6 +69,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         roomPanel.SetActive(true);
         roomName.text = "Room Name : " + PhotonNetwork.CurrentRoom.Name;
         UpdatePlayerList();
+        hasAPlayer = true;
     }
 
     public void OnClickLeaveRoom()
@@ -86,7 +98,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
-           PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);
+           newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);
            newPlayerItem.SetPlayerInfo(player.Value);
 
            if (Equals(player.Value, PhotonNetwork.LocalPlayer))
@@ -108,8 +120,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         UpdatePlayerList();
     }
 
-    public void OnClickReadyButton()
+    public void OnClickPlayButton()
     {
-        
+        PhotonNetwork.LoadLevel("Game");
     }
 }

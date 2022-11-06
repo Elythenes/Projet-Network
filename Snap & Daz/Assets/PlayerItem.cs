@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ExitGames.Client.Photon.StructWrapping;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
@@ -14,13 +15,17 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     public Color highlightColor;
     public GameObject leftArrowButton;
     public GameObject rightArrowButton;
-    public GameObject readyBox;
+    public GameObject readyButton;
 
     private ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
     public Image playerAvatar;
     public Sprite[] avatars;
+    
+    public Image readyZone;
+    public Color[] colors = new Color[] { Color.white, new Color(181f / 255f, 127f / 255f, 127f / 255f) };
 
-    private Player player;
+    public Player player;
+    private bool isReady;
 
     public void SetPlayerInfo(Player _player)
     {
@@ -34,7 +39,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         backgroundImage.color = highlightColor;
         leftArrowButton.SetActive(true);
         rightArrowButton.SetActive(true);
-        readyBox.SetActive(true);
+        readyButton.SetActive(true);
     }
 
     public void OnClickLeftArrow()
@@ -71,6 +76,16 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             UpdatePlayerItem(targetPlayer);
         }
+
+        foreach (Player tempPlayer in PhotonNetwork.PlayerList)
+        {
+            if (player.IsMasterClient) return;
+
+            if ((int)tempPlayer.CustomProperties["playerAvatar"] != (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] && (bool)tempPlayer.CustomProperties["isReady"] && (bool)PhotonNetwork.LocalPlayer.CustomProperties["isReady"])
+            {
+                playerProperties["canStart"] = true;
+            }
+        }
     }
     
     void UpdatePlayerItem(Player player)
@@ -85,39 +100,23 @@ public class PlayerItem : MonoBehaviourPunCallbacks
             playerProperties["playerAvatar"] = 0;
         }
 
-        Image readyBoxColor = readyBox.GetComponent<Image>();
-        
-        if(player.CustomProperties.ContainsKey("playerReady"))
+        if (player.CustomProperties.ContainsKey("isReady"))
         {
-            if ((int)player.CustomProperties["playerReady"] == 1)
-            {
-                readyBoxColor.color = new Color(255f, 131f, 131f);
-                playerProperties["playerReady"] = 1;
-            }
-                
-            else if ((int)player.CustomProperties["playerReady"] == 0)
-            {
-                readyBoxColor.color = new Color(209f, 180f, 157f);
-                playerProperties["playerReady"] = 0;
-            }
+            readyZone.color = colors[(int)player.CustomProperties["isReady"]];
+            playerProperties["isReady"] = (int)player.CustomProperties["isReady"];
         }
         else
         {
-            playerProperties["playerReady"] = 0;
+            playerProperties["isReady"] = 0;
         }
     }
 
-    private int isReady;
-    
-    public void OnCheckReadyButton()
+    public void OnClickReadyButton()
     {
-        isReady = (isReady + 1) % 2;
-        Debug.Log(isReady);
-        
-        playerProperties["playerReady"] = isReady;
-        
-        Debug.Log((int)playerProperties["playerReady"]);
+        isReady = !isReady;
 
+        playerProperties["isReady"] = isReady ? 1 : 0;
+        
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 }
