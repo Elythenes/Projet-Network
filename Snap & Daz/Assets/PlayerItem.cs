@@ -15,14 +15,14 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     public Color highlightColor;
     public GameObject leftArrowButton;
     public GameObject rightArrowButton;
-    public GameObject readyButton;
+    public Button readyButton;
 
     private ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
     public Image playerAvatar;
     public Sprite[] avatars;
     
     public Image readyZone;
-    public Color[] colors = new Color[] { Color.white, new Color(181f / 255f, 127f / 255f, 127f / 255f) };
+    public Color[] colors = {Color.white, new Color(181f / 255f, 127f / 255f, 127f / 255f) };
 
     public Player player;
     private bool isReady;
@@ -39,7 +39,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         backgroundImage.color = highlightColor;
         leftArrowButton.SetActive(true);
         rightArrowButton.SetActive(true);
-        readyButton.SetActive(true);
+        readyButton.interactable = true;
     }
 
     public void OnClickLeftArrow()
@@ -79,11 +79,19 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
         foreach (Player tempPlayer in PhotonNetwork.PlayerList)
         {
-            if (player.IsMasterClient) return;
+            if (Equals(tempPlayer, PhotonNetwork.LocalPlayer)) return;
 
             if ((int)tempPlayer.CustomProperties["playerAvatar"] != (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] && (bool)tempPlayer.CustomProperties["isReady"] && (bool)PhotonNetwork.LocalPlayer.CustomProperties["isReady"])
             {
                 playerProperties["canStart"] = true;
+                tempPlayer.CustomProperties["canStart"] = true;
+                PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+            }
+            else
+            {
+                playerProperties["canStart"] = false;
+                tempPlayer.CustomProperties["canStart"] = false;
+                PhotonNetwork.SetPlayerCustomProperties(playerProperties);
             }
         }
     }
@@ -102,12 +110,12 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
         if (player.CustomProperties.ContainsKey("isReady"))
         {
-            readyZone.color = colors[(int)player.CustomProperties["isReady"]];
-            playerProperties["isReady"] = (int)player.CustomProperties["isReady"];
+            readyZone.color = colors[(bool)player.CustomProperties["isReady"]?0:1];
+            playerProperties["isReady"] = (bool)player.CustomProperties["isReady"];
         }
         else
         {
-            playerProperties["isReady"] = 0;
+            playerProperties["isReady"] = false;
         }
     }
 
@@ -115,7 +123,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     {
         isReady = !isReady;
 
-        playerProperties["isReady"] = isReady ? 1 : 0;
+        playerProperties["isReady"] = isReady;
         
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }

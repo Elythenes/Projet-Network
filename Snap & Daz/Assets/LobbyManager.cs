@@ -41,9 +41,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         joinButton.interactable = joinRoomInputField.text.Length >= 1;
 
         if (!hasAPlayer) return;
-        if (newPlayerItem.player.CustomProperties.ContainsKey("isReady"))
+        
+        if (newPlayerItem.player.CustomProperties.ContainsKey("canStart"))
         {
-            playButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2 && (bool)PhotonNetwork.LocalPlayer.CustomProperties["isReady"]);
+            playButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2 && (bool)PhotonNetwork.LocalPlayer.CustomProperties["canStart"]);
         }
     }
 
