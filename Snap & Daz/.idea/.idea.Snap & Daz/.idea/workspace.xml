@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b98b10e0-bcf0-40fe-8aba-18d22e5add15" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LobbyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LobbyManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/PlayerItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/PlayerItem.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Lobby.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
-    </list>
+    <list default="true" id="b98b10e0-bcf0-40fe-8aba-18d22e5add15" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +46,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Downloads\2021.3.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;C:\Users\e.dehay\Projet-Network\Snap &amp; Daz&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\e.dehay\Projet-Network\Snap &amp; Daz" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -71,10 +63,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17456">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9996">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="17456" />
+      <option name="pid" value="9996" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -93,6 +85,7 @@
       <workItem from="1667412278787" duration="8287000" />
       <workItem from="1667572280881" duration="6647000" />
       <workItem from="1667691644160" duration="5528000" />
+      <workItem from="1667864598999" duration="2536000" />
     </task>
     <servers />
   </component>
@@ -117,23 +110,6 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/LobbyManager.cs</url>
-          <line>46</line>
-          <properties documentPath="C:\Users\t.mottet\Projet-Network\Snap &amp; Daz\Assets\LobbyManager.cs" initialLine="46" containingFunctionPresentation="method 'Update'">
-            <startOffsets>
-              <option value="1249" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1410" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#Photon.Realtime.Player" memberName="CustomProperties" />

@@ -26,12 +26,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject playButton;
     
     private PlayerItem newPlayerItem;
-    private bool hasAPlayer;
 
     private void Start()
     {
         PhotonNetwork.JoinLobby();
-        //nickName.text = photonView.Owner.NickName;
         nickName.text = PlayerPrefs.GetString("PlayerName");
     }
 
@@ -39,13 +37,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         createButton.interactable = createRoomInputField.text.Length >= 1;
         joinButton.interactable = joinRoomInputField.text.Length >= 1;
-
-        if (!hasAPlayer) return;
-        
-        if (newPlayerItem.player.CustomProperties.ContainsKey("canStart"))
-        {
-            playButton.SetActive(PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2 && (bool)PhotonNetwork.LocalPlayer.CustomProperties["canStart"]);
-        }
     }
 
     public void OnClickCreate()
@@ -70,7 +61,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         roomPanel.SetActive(true);
         roomName.text = "Room Name : " + PhotonNetwork.CurrentRoom.Name;
         UpdatePlayerList();
-        hasAPlayer = true;
     }
 
     public void OnClickLeaveRoom()

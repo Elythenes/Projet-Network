@@ -25,7 +25,6 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     public Color[] colors = {Color.white, new Color(181f / 255f, 127f / 255f, 127f / 255f) };
 
     public Player player;
-    private bool isReady;
 
     public void SetPlayerInfo(Player _player)
     {
@@ -69,30 +68,19 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
+
+    public void OnClickReadyButton()
+    {
+        playerProperties["isReady"] = !(bool)playerProperties["isReady"];
+
+        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+    }
     
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable playerProperties)
     {
         if (player == targetPlayer)
         {
             UpdatePlayerItem(targetPlayer);
-        }
-
-        foreach (Player tempPlayer in PhotonNetwork.PlayerList)
-        {
-            if (Equals(tempPlayer, PhotonNetwork.LocalPlayer)) return;
-
-            if ((int)tempPlayer.CustomProperties["playerAvatar"] != (int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] && (bool)tempPlayer.CustomProperties["isReady"] && (bool)PhotonNetwork.LocalPlayer.CustomProperties["isReady"])
-            {
-                playerProperties["canStart"] = true;
-                tempPlayer.CustomProperties["canStart"] = true;
-                PhotonNetwork.SetPlayerCustomProperties(playerProperties);
-            }
-            else
-            {
-                playerProperties["canStart"] = false;
-                tempPlayer.CustomProperties["canStart"] = false;
-                PhotonNetwork.SetPlayerCustomProperties(playerProperties);
-            }
         }
     }
     
@@ -110,21 +98,12 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
         if (player.CustomProperties.ContainsKey("isReady"))
         {
-            readyZone.color = colors[(bool)player.CustomProperties["isReady"]?0:1];
+            readyZone.color = colors[(bool)playerProperties["isReady"] ? 1 : 0];
             playerProperties["isReady"] = (bool)player.CustomProperties["isReady"];
         }
         else
         {
             playerProperties["isReady"] = false;
         }
-    }
-
-    public void OnClickReadyButton()
-    {
-        isReady = !isReady;
-
-        playerProperties["isReady"] = isReady;
-        
-        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 }
