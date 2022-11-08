@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using ExitGames.Client.Photon.StructWrapping;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using System.Linq;
 
 public class PlayerItem : MonoBehaviourPunCallbacks
 {
@@ -72,15 +70,28 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     public void OnClickReadyButton()
     {
         playerProperties["isReady"] = !(bool)playerProperties["isReady"];
-
+        
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            CheckAllPlayersReady();
+        }
     }
-    
+
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable playerProperties)
     {
         if (player == targetPlayer)
         {
             UpdatePlayerItem(targetPlayer);
+        }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (playerProperties.ContainsKey("isReady"))
+            {
+                CheckAllPlayersReady();
+            }
         }
     }
     
@@ -95,7 +106,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             playerProperties["playerAvatar"] = 0;
         }
-
+        
         if (player.CustomProperties.ContainsKey("isReady"))
         {
             readyZone.color = colors[(bool)playerProperties["isReady"] ? 1 : 0];
@@ -104,6 +115,16 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         else
         {
             playerProperties["isReady"] = false;
+        }
+    }
+
+    void CheckAllPlayersReady()
+    {
+        var players = PhotonNetwork.PlayerList;
+
+        if (players.All(p => p.CustomProperties.ContainsKey("isReady") && (bool)p.CustomProperties["isReady"]))
+        {
+            Debug.Log("All players are ready");
         }
     }
 }

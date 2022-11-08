@@ -26,6 +26,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject playButton;
     
     private PlayerItem newPlayerItem;
+    private bool isConnected;
 
     private void Start()
     {
@@ -37,6 +38,24 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         createButton.interactable = createRoomInputField.text.Length >= 1;
         joinButton.interactable = joinRoomInputField.text.Length >= 1;
+
+        if (isConnected && PhotonNetwork.IsMasterClient)
+        {
+            playButton.SetActive(true);
+        }
+        else
+        {
+            playButton.SetActive(false);
+        }
+        
+        if (isConnected && PhotonNetwork.CurrentRoom.PlayerCount >= 2 && PhotonNetwork.IsMasterClient)
+        {
+            playButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            playButton.GetComponent<Button>().interactable = false;
+        }
     }
 
     public void OnClickCreate()
@@ -60,11 +79,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         roomPanel.SetActive(true);
         roomName.text = "Room Name : " + PhotonNetwork.CurrentRoom.Name;
+        isConnected = true;
         UpdatePlayerList();
     }
 
     public void OnClickLeaveRoom()
     {
+        isConnected = false;
         PhotonNetwork.LeaveRoom();
     }
 
