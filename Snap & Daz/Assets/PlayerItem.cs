@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using ExitGames.Client.Photon.StructWrapping;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using System.Linq;
 
 public class PlayerItem : MonoBehaviourPunCallbacks
 {
@@ -72,10 +70,13 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     public void OnClickReadyButton()
     {
         playerProperties["isReady"] = !(bool)playerProperties["isReady"];
-
+        
+        leftArrowButton.SetActive(!leftArrowButton.activeInHierarchy);
+        rightArrowButton.SetActive(!rightArrowButton.activeInHierarchy);
+        
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
-    
+
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable playerProperties)
     {
         if (player == targetPlayer)
@@ -95,10 +96,11 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             playerProperties["playerAvatar"] = 0;
         }
-
+        
         if (player.CustomProperties.ContainsKey("isReady"))
         {
-            readyZone.color = colors[(bool)playerProperties["isReady"] ? 1 : 0];
+            int x = (bool)player.CustomProperties["isReady"] ? 1 : 0;
+            readyZone.color = colors[x];
             playerProperties["isReady"] = (bool)player.CustomProperties["isReady"];
         }
         else

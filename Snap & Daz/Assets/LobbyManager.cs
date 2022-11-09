@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using ExitGames.Client.Photon.StructWrapping;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -24,19 +25,56 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public Transform playerItemParent;
 
     public GameObject playButton;
+    private Button playButtonInteract;
     
     private PlayerItem newPlayerItem;
-
+    private bool isConnected;
+    
     private void Start()
     {
         PhotonNetwork.JoinLobby();
         nickName.text = PlayerPrefs.GetString("PlayerName");
+        playButtonInteract = playButton.GetComponent<Button>();
     }
 
     void Update()
     {
         createButton.interactable = createRoomInputField.text.Length >= 1;
         joinButton.interactable = joinRoomInputField.text.Length >= 1;
+
+        if (isConnected && PhotonNetwork.IsMasterClient)
+        {
+            playButton.SetActive(true);
+        }
+        else
+        {
+            playButton.SetActive(false);
+        }
+        
+        if (isConnected && PhotonNetwork.CurrentRoom.PlayerCount >= 2 && PhotonNetwork.IsMasterClient)
+        {
+            CheckPlayButton();
+        }
+    }
+
+    void CheckPlayButton()
+    {
+        var masterPlayer = PhotonNetwork.PlayerList[0].CustomProperties;
+        var otherPlayer = PhotonNetwork.PlayerList[1].CustomProperties;
+
+        if (!masterPlayer.ContainsKey("isReady") || !otherPlayer.ContainsKey("isReady") || !masterPlayer.ContainsKey("playerAvatar") || !otherPlayer.ContainsKey("playerAvatar"))
+        {
+            return;
+        }
+
+        if ((bool)masterPlayer["isReady"] && (bool)otherPlayer["isReady"] && (int)masterPlayer["playerAvatar"] != (int)otherPlayer["playerAvatar"])
+        {
+            playButtonInteract.interactable = true;
+        }
+        else
+        {
+            playButtonInteract.interactable = false;
+        }
     }
 
     public void OnClickCreate()
@@ -60,11 +98,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         roomPanel.SetActive(true);
         roomName.text = "Room Name : " + PhotonNetwork.CurrentRoom.Name;
+        isConnected = true;
         UpdatePlayerList();
     }
 
     public void OnClickLeaveRoom()
     {
+        isConnected = false;
         PhotonNetwork.LeaveRoom();
     }
 
