@@ -71,12 +71,10 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     {
         playerProperties["isReady"] = !(bool)playerProperties["isReady"];
         
+        leftArrowButton.SetActive(!leftArrowButton.activeInHierarchy);
+        rightArrowButton.SetActive(!rightArrowButton.activeInHierarchy);
+        
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
-
-        if (PhotonNetwork.IsMasterClient)
-        {
-            CheckAllPlayersReady();
-        }
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable playerProperties)
@@ -84,14 +82,6 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         if (player == targetPlayer)
         {
             UpdatePlayerItem(targetPlayer);
-        }
-
-        if (PhotonNetwork.IsMasterClient)
-        {
-            if (playerProperties.ContainsKey("isReady"))
-            {
-                CheckAllPlayersReady();
-            }
         }
     }
     
@@ -109,22 +99,13 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         
         if (player.CustomProperties.ContainsKey("isReady"))
         {
-            readyZone.color = colors[(bool)playerProperties["isReady"] ? 1 : 0];
+            int x = (bool)player.CustomProperties["isReady"] ? 1 : 0;
+            readyZone.color = colors[x];
             playerProperties["isReady"] = (bool)player.CustomProperties["isReady"];
         }
         else
         {
             playerProperties["isReady"] = false;
-        }
-    }
-
-    void CheckAllPlayersReady()
-    {
-        var players = PhotonNetwork.PlayerList;
-
-        if (players.All(p => p.CustomProperties.ContainsKey("isReady") && (bool)p.CustomProperties["isReady"]))
-        {
-            Debug.Log("All players are ready");
         }
     }
 }

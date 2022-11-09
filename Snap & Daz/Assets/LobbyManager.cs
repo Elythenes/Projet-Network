@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using ExitGames.Client.Photon.StructWrapping;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -24,14 +25,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public Transform playerItemParent;
 
     public GameObject playButton;
+    private Button playButtonInteract;
     
     private PlayerItem newPlayerItem;
     private bool isConnected;
-
+    
     private void Start()
     {
         PhotonNetwork.JoinLobby();
         nickName.text = PlayerPrefs.GetString("PlayerName");
+        playButtonInteract = playButton.GetComponent<Button>();
     }
 
     void Update()
@@ -50,11 +53,27 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         
         if (isConnected && PhotonNetwork.CurrentRoom.PlayerCount >= 2 && PhotonNetwork.IsMasterClient)
         {
-            playButton.GetComponent<Button>().interactable = true;
+            CheckPlayButton();
+        }
+    }
+
+    void CheckPlayButton()
+    {
+        var masterPlayer = PhotonNetwork.PlayerList[0].CustomProperties;
+        var otherPlayer = PhotonNetwork.PlayerList[1].CustomProperties;
+
+        if (!masterPlayer.ContainsKey("isReady") || !otherPlayer.ContainsKey("isReady") || !masterPlayer.ContainsKey("playerAvatar") || !otherPlayer.ContainsKey("playerAvatar"))
+        {
+            return;
+        }
+
+        if ((bool)masterPlayer["isReady"] && (bool)otherPlayer["isReady"] && (int)masterPlayer["playerAvatar"] != (int)otherPlayer["playerAvatar"])
+        {
+            playButtonInteract.interactable = true;
         }
         else
         {
-            playButton.GetComponent<Button>().interactable = false;
+            playButtonInteract.interactable = false;
         }
     }
 

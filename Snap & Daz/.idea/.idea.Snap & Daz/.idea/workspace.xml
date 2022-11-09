@@ -8,8 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/LobbyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LobbyManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/PlayerItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/PlayerItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/PlayerItem.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Lobby.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +91,7 @@
       <workItem from="1667691644160" duration="5528000" />
       <workItem from="1667864598999" duration="2536000" />
       <workItem from="1667910298015" duration="2868000" />
+      <workItem from="1668014865718" duration="6333000" />
     </task>
     <servers />
   </component>
