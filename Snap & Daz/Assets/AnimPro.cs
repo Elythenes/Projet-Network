@@ -15,7 +15,7 @@ public class AnimPro : MonoBehaviour
     public float footSpacing;
     public Vector3 oldPosition, currentPosition, newPosition;
     public Vector3 oldNormal, currentNormal, newNormal;
-    private float lerp;
+    public float lerp;
 
     void Start()
     {
@@ -23,15 +23,17 @@ public class AnimPro : MonoBehaviour
         currentPosition = newPosition = oldPosition = transform.position;
         lerp = 1;
     }
-    void LateUpdate()
+    void Update()
     {
         transform.position = currentPosition;
         transform.up = currentNormal;
         
-        Ray ray = new Ray(body.transform.position + (body.right * footSpacing), Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit info, 10, groundLayer))
+        Ray ray = new Ray(body.position + (body.right * footSpacing), Vector3.down);
+        Debug.DrawRay(transform.position, ray.direction, Color.yellow);
+        if (Physics.Raycast(ray, out RaycastHit info, Mathf.Infinity, groundLayer))
         {
-            if (Vector3.Distance(newPosition, info.point) > stepDistance && !otherFoot.IsMoving() && lerp >= 1)
+            Debug.Log(info.point);
+            if (Vector3.Distance(newPosition, info.point) > stepDistance /*&& !otherFoot.IsMoving()*/ /*&& lerp >= 1*/)
             {
                 lerp = 0;
                 int direction = body.InverseTransformPoint(info.point).z > body.InverseTransformPoint(newPosition).z ? 1 : -1;  // Doit on bouger vers l'avant ou vers l'arrière ?
