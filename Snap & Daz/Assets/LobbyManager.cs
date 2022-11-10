@@ -105,6 +105,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void OnClickLeaveRoom()
     {
         isConnected = false;
+        
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("playerAvatar"))
+        {
+            PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"] = 0;
+        }
+        
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("isReady"))
+        {
+            PhotonNetwork.LocalPlayer.CustomProperties["isReady"] = false;
+        }
+               
         PhotonNetwork.LeaveRoom();
     }
 
