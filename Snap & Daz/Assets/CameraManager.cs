@@ -44,9 +44,10 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-       
+        
         if (!isCinematique)
         {
+            PlayerPos = transform.position;
             Vector3 newPos = player.transform.position + cameraOffset;
             transform.position = Vector3.Slerp(transform.position,newPos,SmoothFactor);
             
@@ -89,7 +90,9 @@ public class CameraManager : MonoBehaviour
     public void CinematiquePorte(GameObject porte, float timeToGo)
     {
         Vector3 originalPos = transform.position;
+        float originalFoV = camera.fieldOfView;
         isCinematique = true;
+        camera.fieldOfView = 25;
         isMoving = true;
 
         //transform.DOMove(porte.transform.position - new Vector3(5,-5,-5),timeToGo);
@@ -103,7 +106,8 @@ public class CameraManager : MonoBehaviour
             transform.LookAt(targetPosition);
             transform.DOMove(targetPosition, timeToGo).OnComplete
                 (() => RetourPerso());
-            
+            camera.fieldOfView = originalFoV;
+
             //var offsetX = Math.Abs(transform.position.x - targetPosition.x);
             //var offsetZ = Math.Abs(transform.position.z - targetPosition.z);
         }
