@@ -115,7 +115,7 @@ Material:
     - _GrainPeriod: 200
     - _GrainShineStrength: 0.46
     - _Metallic: 0
-    - _NormalStrength: 2
+    - _NormalStrength: 18.94
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _PolygonSides: 5.92
@@ -131,10 +131,10 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SubstrateDuneHeightMax: 1
-    - _SubstrateGrainHeightMax: 1.41
+    - _SubstrateGrainHeightMax: 1.31
     - _SubstrateTightening: 30
     - _Surface: 0
-    - _UvScale: 0.62
+    - _UvScale: 1.11
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
