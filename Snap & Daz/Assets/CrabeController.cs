@@ -20,7 +20,7 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
     public bool isWalled;
     public float WallSpeed;
     public ConstantForce wallGravity;
-
+    
     public void Awake()
     {
         if (instance == null)
@@ -61,7 +61,6 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
         //Vector3 move = transform.right * moveX + transform.forward * moveZ;
         if (!isWalled)
         {
-            speed = 850;
             wallGravity.force = new Vector3(0,0,0);
            rotationMove = new Vector3(moveX, 0, moveZ);
            rotationMove.Normalize();
@@ -82,7 +81,7 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
             {
                 if (rotationMove != Vector3.zero)
                 {
-                    rb.AddForce(rotationMove * speed * Time.deltaTime);
+                    rb.velocity += (rotationMove * speed * Time.deltaTime);
                     Quaternion rotateTo = Quaternion.LookRotation(rotationMove,Vector3.up);
                     transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime);
                 }
@@ -96,7 +95,7 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
             {
                 if (rotationMove != Vector3.zero)
                 {
-                    rb.AddForce(rotationMove * speed * Time.deltaTime);
+                    rb.AddForce(rotationMove * WallSpeed * Time.deltaTime);
                     Quaternion rotateTo = Quaternion.LookRotation(rotationMove, Vector3.right);
                     transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime);
                 }

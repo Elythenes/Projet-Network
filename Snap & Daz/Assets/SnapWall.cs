@@ -9,21 +9,39 @@ public class SnapWall : MonoBehaviour
    public LayerMask SnapLayer;
    public CrabeController snap;
 
+   public bool canClimb;
    private void Awake()
    {
       snap = GameObject.Find("SNAP").GetComponent<CrabeController>();
    }
 
-   public void OnTriggerStay(Collider other)
+   private void Update()
    {
-      //if (other.gameObject.layer == SnapLayer)
-      //{
-         Debug.Log("rentré");
-         if(Input.GetKeyDown(KeyCode.A))
+      if (canClimb)
+      {
+         if (Input.GetKeyDown(KeyCode.A))
          {
-            Debug.Log("appuyé");
             snap.isWalled = true;
          }
-      //}
+      }
+   }
+
+
+   public void OnTriggerEnter(Collider other)
+   {
+      if (other.gameObject.layer == 7)
+      {
+         Debug.Log("rentré");
+         canClimb = true;
+      }
+    
+   }
+   
+   public void OnTriggerExit(Collider other)
+   {
+      if (other.gameObject.layer == 7)
+      {
+         canClimb = false;
+      }
    }
 }
