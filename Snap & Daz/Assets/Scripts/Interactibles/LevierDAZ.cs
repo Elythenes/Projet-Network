@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class LevierDAZ : MonoBehaviour
 {
@@ -27,7 +23,6 @@ public class LevierDAZ : MonoBehaviour
 
     private void Update()
     {
-
         if (canActive)
         {
             if (Input.GetKey(KeyCode.F))
@@ -45,24 +40,18 @@ public class LevierDAZ : MonoBehaviour
         }
 
 
-        if (!electriqueAssocie.isLocked)
+        if (electriqueAssocie is not null && electriqueAssocie.isLocked) return;
+        if (isActive)
         {
-            if (isActive)
-            {
-                if (plateformeMAIN.transform.position.y < maxY)
-                {
-                    plateformeMAIN.transform.Translate(new Vector3(0,plateformeSpeed,0));
-                    plateforme2.transform.Translate(new Vector3(0,-plateformeSpeed,0));
-                }
-            }
-            else
-            {
-                if (plateformeMAINrenderer.bounds.max.y > minY)
-                {
-                    plateformeMAIN.transform.Translate(new Vector3(0,-plateformeSpeed,0));
-                    plateforme2.transform.Translate(new Vector3(0,plateformeSpeed,0));
-                }
-            }
+            if (!(plateformeMAIN.transform.position.y < maxY)) return;
+            plateformeMAIN.transform.Translate(new Vector3(0,plateformeSpeed,0));
+            plateforme2.transform.Translate(new Vector3(0,-plateformeSpeed,0));
+        }
+        else
+        {
+            if (!(plateformeMAINrenderer.bounds.min.y > minY)) return;
+            plateformeMAIN.transform.Translate(new Vector3(0,-plateformeSpeed,0));
+            plateforme2.transform.Translate(new Vector3(0,plateformeSpeed,0));
         }
     }
 

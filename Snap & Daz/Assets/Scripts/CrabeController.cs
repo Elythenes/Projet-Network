@@ -1,14 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
+public class CrabeController : MonoBehaviourPunCallbacks
 {
-    public static GameObject LocalPlayerInstance;
-    public static CrabeController instance;
     [SerializeField] Rigidbody rb;
     [SerializeField] float speed;
     [SerializeField] float rotateSpeed;
@@ -20,38 +14,13 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
     public bool isWalled;
     public float WallSpeed;
     public ConstantForce wallGravity;
-    
-    public void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) //
-    {
-        if (stream.IsWriting)
-        {
-            
-            // tous les trucs à envoyer
-            
-           /* stream.SendNext(IsFiring);
-            stream.SendNext(health);*/
-        }
-        else
-        {
-            
-            // tous les trucs à lire
-            
-           /* this.IsFiring = (bool)stream.ReceiveNext();
-            this.health = (float)stream.ReceiveNext();*/
-        }
-    }
-
+    public PhotonView photonView;
 
     private void Update()
     {
+        if (!photonView.IsMine) return;
+        
         //Vector3 move;
         //move = playerInput.Player.Move.ReadValue<Vector2>();
         
@@ -60,7 +29,7 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
 
         //Vector3 move = transform.right * moveX + transform.forward * moveZ;
         if (!isWalled)
-        {
+        { 
             wallGravity.force = new Vector3(0,0,0);
            rotationMove = new Vector3(moveX, 0, moveZ);
            rotationMove.Normalize();
@@ -75,13 +44,13 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
        
        
 
-        if (!CameraManager.instance.isCinematique)
+        if (CameraManager.instance is null || !CameraManager.instance.isCinematique)
         {
             if (!isWalled)
             {
                 if (rotationMove != Vector3.zero)
                 {
-                    rb.velocity += (rotationMove * speed * Time.deltaTime);
+                    rb.velocity += (rotationMove * (speed * Time.deltaTime));
                     if (canRotate)
                     {
                         Quaternion rotateTo = Quaternion.LookRotation(rotationMove,Vector3.up);
@@ -99,7 +68,7 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
             {
                 if (rotationMove != Vector3.zero)
                 {
-                    rb.AddForce(rotationMove * WallSpeed * Time.deltaTime);
+                    rb.AddForce(rotationMove * (WallSpeed * Time.deltaTime));
                     if (canRotate)
                     {
                         Quaternion rotateTo = Quaternion.LookRotation(rotationMove, Vector3.right);
