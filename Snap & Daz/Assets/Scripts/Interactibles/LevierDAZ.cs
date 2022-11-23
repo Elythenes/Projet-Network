@@ -10,6 +10,7 @@ public class LevierDAZ : MonoBehaviour
     public bool isActive;
     public bool canActive;
 
+    public ElectriqueSNAP electriqueAssocie;
     public GameObject plateformeMAIN;
     private MeshRenderer plateformeMAINrenderer;
     public GameObject plateforme2;
@@ -29,7 +30,7 @@ public class LevierDAZ : MonoBehaviour
 
         if (canActive)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.F))
             {
                 isActive = true; 
             }
@@ -38,24 +39,29 @@ public class LevierDAZ : MonoBehaviour
                 isActive = false;
             }
         }
-      
-
-        
-        
-        if (isActive)
-        {
-            if (plateformeMAIN.transform.position.y < maxY)
-            {
-                plateformeMAIN.transform.Translate(new Vector3(0,plateformeSpeed,0));
-                plateforme2.transform.Translate(new Vector3(0,-plateformeSpeed,0));
-            }
-        }
         else
         {
-            if (plateformeMAINrenderer.bounds.max.y > minY)
+            isActive = false;
+        }
+
+
+        if (!electriqueAssocie.isLocked)
+        {
+            if (isActive)
             {
-                plateformeMAIN.transform.Translate(new Vector3(0,-plateformeSpeed,0));
-                plateforme2.transform.Translate(new Vector3(0,plateformeSpeed,0));
+                if (plateformeMAIN.transform.position.y < maxY)
+                {
+                    plateformeMAIN.transform.Translate(new Vector3(0,plateformeSpeed,0));
+                    plateforme2.transform.Translate(new Vector3(0,-plateformeSpeed,0));
+                }
+            }
+            else
+            {
+                if (plateformeMAINrenderer.bounds.max.y > minY)
+                {
+                    plateformeMAIN.transform.Translate(new Vector3(0,-plateformeSpeed,0));
+                    plateforme2.transform.Translate(new Vector3(0,plateformeSpeed,0));
+                }
             }
         }
     }
