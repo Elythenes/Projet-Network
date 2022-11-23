@@ -42,14 +42,14 @@ public class CameraManager : MonoBehaviour
         cameraOffset = transform.position - player.transform.position;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         
         if (!isCinematique)
         {
             PlayerPos = transform.position;
             Vector3 newPos = player.transform.position + cameraOffset;
-            transform.position = Vector3.Slerp(transform.position,newPos,SmoothFactor);
+            transform.position = Vector3.Lerp(transform.position,newPos,SmoothFactor);
             
             if (camera.fieldOfView > 60)
             {
