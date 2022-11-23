@@ -12,23 +12,31 @@ public class DoorBehaviour : MonoBehaviour
     public float timeMoveCamera;
     private Vector3 positionWhenClosed;
     public bool cinematiquePorte = false;
+    public int numberOfKey = 1;
+    private int keyActivated;
 
     private void Start()
     {
         positionWhenClosed = gameObject.transform.position;
+        keyActivated = 0;
     }
 
-    public void OuverturePorte()
+    public void Key()
     {
-        transform.DOMove(transform.position + positionDifferenceWhenOpen, openingDuration);
-        if (cinematiquePorte)
+        keyActivated += 1;
+        if (keyActivated >= numberOfKey)
         {
-            CameraManager.instance.CinematiquePorte(gameObject,timeMoveCamera); 
+            transform.DOMove(transform.position + positionDifferenceWhenOpen, openingDuration);
+            if (cinematiquePorte)
+            {
+                CameraManager.instance.CinematiquePorte(gameObject,timeMoveCamera); 
+            }
         }
     }
 
     public void FermeturePorte()
     {
+        keyActivated -= 1;
         transform.DOMove(positionWhenClosed, closingDuration);
     }
 }
