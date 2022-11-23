@@ -21,12 +21,19 @@ public class PlaqueDePression : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        meshRenderer.material = activatedMaterial;
-        eventActivation.Invoke();
+        if (other.gameObject.layer == 7 || other.gameObject.layer == 8 || other.gameObject.layer == 9)
+        {
+            meshRenderer.material = activatedMaterial;
+            eventActivation.Invoke();
+        }
+        
     }
     private void OnTriggerExit(Collider other)
     {
-        meshRenderer.material = buttonMaterial;
-        eventDeactivation.Invoke();
+        if (other.gameObject.layer == 7 || other.gameObject.layer == 8 || other.gameObject.layer == 9)
+        {
+            meshRenderer.material = buttonMaterial;
+            eventDeactivation.Invoke();
+        }
     }
 }
