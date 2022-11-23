@@ -15,12 +15,6 @@ public class BoutonBehaviour : MonoBehaviour
     public bool OneUse;
     public GameObject UIInteract;
     public UnityEvent EventActivation;
-    
-    [Header("Event : Ouverture Porte")]
-    public GameObject AssociatedDoor;
-    public float HauteurOuverture;
-    public float DureeOuverture;
-    public float TimeMoveCamera;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !lockActivation)
@@ -38,7 +32,7 @@ public class BoutonBehaviour : MonoBehaviour
             UIInteract.SetActive(false);
         }
     }
-
+    
     private void Update()
     {
         if (isActivable)
@@ -53,13 +47,6 @@ public class BoutonBehaviour : MonoBehaviour
                 }
             }
         }
-    }
-
-
-    public void OuverturePorte()
-    {
-        AssociatedDoor.transform.DOMove(AssociatedDoor.transform.position + new Vector3(0,HauteurOuverture,0), DureeOuverture);
-        CameraManager.instance.CinematiquePorte(AssociatedDoor,TimeMoveCamera);
     }
 
 }
