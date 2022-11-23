@@ -12,9 +12,9 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] Rigidbody rb;
     [SerializeField] float speed;
     [SerializeField] float rotateSpeed;
+    public bool canRotate = true;
 
-    private Vector3 rotationMove;
-    public InputMaster playerInput;
+    [HideInInspector] public Vector3 rotationMove;
 
     [Header("Variables pour SNAP")] 
     public bool isWalled;
@@ -82,8 +82,12 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
                 if (rotationMove != Vector3.zero)
                 {
                     rb.velocity += (rotationMove * speed * Time.deltaTime);
-                    Quaternion rotateTo = Quaternion.LookRotation(rotationMove,Vector3.up);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime);
+                    if (canRotate)
+                    {
+                        Quaternion rotateTo = Quaternion.LookRotation(rotationMove,Vector3.up);
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime);
+                    }
+                
                 }
                 else
                 {
@@ -96,13 +100,15 @@ public class CrabeController : MonoBehaviourPunCallbacks, IPunObservable
                 if (rotationMove != Vector3.zero)
                 {
                     rb.AddForce(rotationMove * WallSpeed * Time.deltaTime);
-                    Quaternion rotateTo = Quaternion.LookRotation(rotationMove, Vector3.right);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime);
+                    if (canRotate)
+                    {
+                        Quaternion rotateTo = Quaternion.LookRotation(rotationMove, Vector3.right);
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
+                    }
                 }
                 else
                 {
                     rb.velocity += (rotationMove * speed/2 * Time.deltaTime);
-               
                 }
             }
            
