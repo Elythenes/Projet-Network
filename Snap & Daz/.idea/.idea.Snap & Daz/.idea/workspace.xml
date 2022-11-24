@@ -6,17 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b98b10e0-bcf0-40fe-8aba-18d22e5add15" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD/LevelDesign_Cube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/LD/LevelDesign_Cube.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/OldDaz.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/OldDaz.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/OldSnap.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/OldSnap.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Marie.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Marie.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Thomas_Dev_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Thomas_Dev_Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CrabeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CrabeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LobbyConnexion/LobbyManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LobbyConnexion/LobbyManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +16,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/ElectriqueSNAPThomas.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ElectricElements.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@12.1.7/Runtime/Debugging/DebugManager.Actions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -102,6 +96,8 @@
       <workItem from="1668014865718" duration="6333000" />
       <workItem from="1668619446279" duration="3052000" />
       <workItem from="1669226066417" duration="3319000" />
+      <workItem from="1669281794997" duration="766000" />
+      <workItem from="1669287410765" duration="4807000" />
     </task>
     <servers />
   </component>
