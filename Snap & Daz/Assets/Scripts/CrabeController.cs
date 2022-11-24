@@ -1,7 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
 
-public class CrabeController : MonoBehaviourPunCallbacks
+public class CrabeController : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
     [SerializeField] float speed;
