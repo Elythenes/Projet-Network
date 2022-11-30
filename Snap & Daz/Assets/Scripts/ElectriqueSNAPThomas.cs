@@ -1,36 +1,46 @@
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class ElectriqueSNAPThomas : MonoBehaviour
 {
-    public GameObject receiver; //Objet qui reçoit l'information électrique
-    public ElectricElements receiverScript;
-
-    public bool _canActive;
-    public bool _isActive;
     [SerializeField] private GameObject _UIInteract;
+    public bool _canActive;
 
-    void Start()
-    {
-        receiverScript = receiver.GetComponent<ElectricElements>();
-    }
+    public UnityEvent electricBehaviour;
+
+    // public void PressF(InputAction.CallbackContext context)
+    // {
+    //     if (context.started && _canActive || context.canceled && _canActive)
+    //     {
+    //         Debug.Log("action du joueur avec l'interrupteur électrique");
+    //         
+    //         electricBehaviour.Invoke();
+    //     }
+    // }
 
     void Update()
     {
-        _isActive = _canActive && Input.GetKey(KeyCode.G); //Activé seulement si "peut être activé et bouton F appuyé"
-
-        receiverScript.isElectrified = _isActive;
+        if (Input.GetKeyDown(KeyCode.F) && _canActive)
+        {
+            electricBehaviour.Invoke();
+        }
+        if (Input.GetKeyUp(KeyCode.F) && _canActive)
+        {
+            electricBehaviour.Invoke();
+        }
     }
     
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other) //Détecte SNAP quand il est proche
     {
         if (other.gameObject.layer == 7)
         {
             _UIInteract.SetActive(true);
             _canActive = true;
         }
-    }
+    } 
 
-    public void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other) //Détecte SNAP quand il part
     {
         if (other.gameObject.layer == 7)
         {

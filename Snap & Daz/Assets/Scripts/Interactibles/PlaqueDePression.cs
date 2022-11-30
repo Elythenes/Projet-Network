@@ -12,7 +12,7 @@ public class PlaqueDePression : MonoBehaviour
     [SerializeField] private Material buttonMaterial;
     [SerializeField] private Material activatedMaterial;
     public UnityEvent eventActivation;
-    public UnityEvent eventDeactivation;
+    public UnityEvent eventDesactivation;
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class PlaqueDePression : MonoBehaviour
         if (other.gameObject.layer == 7 || other.gameObject.layer == 8 || other.gameObject.layer == 9)
         {
             meshRenderer.material = buttonMaterial;
-            eventDeactivation.Invoke();
+            eventDesactivation.Invoke();
         }
     }
 }
