@@ -26,11 +26,7 @@ public class SnapController : MonoBehaviour
     private void Start()
     {
         if (!photonView.IsMine) return;
-        CameraManager cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
-        if (cam.player is null)
-        {
-            cam.SetTarget(transform);
-        }
+        
         originalSpeed = speed;
     }
 
