@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b98b10e0-bcf0-40fe-8aba-18d22e5add15" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LevierDAZThomas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LevierDAZThomas.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Thomas_Dev_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Thomas_Dev_Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +97,7 @@
       <workItem from="1669226066417" duration="3319000" />
       <workItem from="1669281794997" duration="766000" />
       <workItem from="1669287410765" duration="4807000" />
+      <workItem from="1669816353180" duration="1227000" />
     </task>
     <servers />
   </component>
