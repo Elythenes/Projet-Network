@@ -105,7 +105,7 @@ public partial class @InputMaster : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2d205830-cd47-4ee5-b48b-2bfcfa8ca411"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
