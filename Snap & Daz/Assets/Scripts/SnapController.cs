@@ -17,7 +17,7 @@ public class SnapController : MonoBehaviour
     
     
     [Header("Variables pour SNAP")]
-    public float wallOrientation;
+    public float wallOrientation; // Orientation du mur dans le sens des aiguilles d'un montre
     public bool isWalled;
     public float WallSpeed;
     public ConstantForce wallGravity;
@@ -25,6 +25,12 @@ public class SnapController : MonoBehaviour
 
     private void Start()
     {
+        if (!photonView.IsMine) return;
+        CameraManager cam = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+        if (cam.player is null)
+        {
+            cam.SetTarget(transform);
+        }
         originalSpeed = speed;
     }
 
@@ -65,23 +71,36 @@ public class SnapController : MonoBehaviour
             if (wallOrientation == 1)
             {
                 wallGravity.force = new Vector3(0,0,-80);
+                speed = WallSpeed;
+                rotationVector = new Vector3(-moveX, -moveZ,0);
+                moveVector =  new Vector3(moveX, moveZ,0);
+                rotationVector.Normalize();
             }
             else if (wallOrientation == 2)
             {
                 wallGravity.force = new Vector3(-80,0,0);
+                speed = WallSpeed;
+                rotationVector = new Vector3(0, moveX,-moveZ);
+                moveVector =  new Vector3(0, moveX,moveZ);
+                rotationVector.Normalize();
             }
             else if (wallOrientation == 3)
             {
                 wallGravity.force = new Vector3(0,0,80);
+                speed = WallSpeed;
+                rotationVector = new Vector3(0, -moveX,-moveZ);
+                moveVector =  new Vector3(0, -moveX,-moveZ);
+                rotationVector.Normalize();
             }
             else if (wallOrientation == 4)
             {
                 wallGravity.force = new Vector3(80,0,0);
+                speed = WallSpeed;
+                rotationVector = new Vector3(0, -moveX,-moveZ);
+                moveVector =  new Vector3(0, moveX,moveZ);
+                rotationVector.Normalize();
             }
-            speed = WallSpeed;
-            rotationVector = new Vector3(0, -moveX,-moveZ);
-            moveVector =  new Vector3(0, moveX,moveZ);
-            rotationVector.Normalize();
+            
         }
        
        
@@ -122,17 +141,17 @@ public class SnapController : MonoBehaviour
                     {
                         if (wallOrientation == 1)
                         {
-                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector , Vector3.back);
+                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector , Vector3.left);
                             transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
                         }
                         else if (wallOrientation == 2)
                         {
-                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector, Vector3.right);
+                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector, Vector3.left);
                             transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
                         }
                         else if (wallOrientation == 3)
                         {
-                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector, Vector3.down);
+                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector, Vector3.left);
                             transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
                         }
                         else if (wallOrientation == 4)

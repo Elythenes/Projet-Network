@@ -14,7 +14,7 @@ public class CameraManager : MonoBehaviour
     
     [Header("Données à trouver")]
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] Transform player;
+    public Transform player;
     public GameObject ping;
     
     [Header("Données à changer")]
@@ -121,5 +121,10 @@ public class CameraManager : MonoBehaviour
         
         transform.position = PlayerPos;
         transform.LookAt(player.transform);
+    }
+
+    public void SetTarget(Transform target)
+    {
+        this.player = target;
     }
 }
