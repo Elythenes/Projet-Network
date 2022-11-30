@@ -34,17 +34,17 @@ public class LevierDAZThomas : ElectricElements
         var direction1 = (_elevatorBehaviour1.endPos - _elevatorBehaviour1.startPos)/100;
         var direction2 = (_elevatorBehaviour2.endPos - _elevatorBehaviour2.startPos)/100;
 
-        if (elevator1.transform.position != _elevatorBehaviour1.endPos && _isActive)
+        if (_isActive && Vector3.Distance(elevator1.transform.position, _elevatorBehaviour1.endPos) >= 0.2f)
         {
             elevator1.transform.Translate(direction1);
             elevator2.transform.Translate(direction2);
         }
-        else if (elevator1.transform.position == _elevatorBehaviour1.endPos && _isActive)
+        else if (_isActive && Vector3.Distance(elevator1.transform.position, _elevatorBehaviour1.endPos) <= 0.2f)
         {
             elevator1.transform.position = _elevatorBehaviour1.endPos;
             elevator2.transform.position = _elevatorBehaviour2.endPos;
         }
-        else if (elevator1.transform.position == _elevatorBehaviour1.startPos)
+        else if (Vector3.Distance(elevator1.transform.position, _elevatorBehaviour1.startPos) <= 0.2f)
         {
             elevator1.transform.position = _elevatorBehaviour1.startPos;
             elevator2.transform.position = _elevatorBehaviour2.startPos;
