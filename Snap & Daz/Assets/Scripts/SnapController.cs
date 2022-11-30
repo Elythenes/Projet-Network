@@ -9,8 +9,8 @@ public class SnapController : MonoBehaviour
     private float originalSpeed;
     [SerializeField] float rotateSpeed;
     public bool canRotate = true;
+    public bool isDiagonal;
     public LayerMask ground;
-    public Vector3 oui;
 
     [HideInInspector] public Vector3 rotationVector;
     [HideInInspector] public Vector3 moveVector;
@@ -37,6 +37,14 @@ public class SnapController : MonoBehaviour
         
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveZ = Input.GetAxisRaw("Vertical");
+        if (moveX != 0 && moveZ != 0)
+        {
+            isDiagonal = true;
+        }
+        else
+        {
+            isDiagonal = false;
+        }
         Debug.DrawRay(transform.position,transform.forward - transform.up,Color.green);
         if (!Physics.Raycast(transform.position, transform.forward - transform.up,ground))
         {
@@ -72,6 +80,7 @@ public class SnapController : MonoBehaviour
             }
             speed = WallSpeed;
             rotationVector = new Vector3(0, -moveX,-moveZ);
+            moveVector =  new Vector3(0, moveX,moveZ);
             rotationVector.Normalize();
         }
        
@@ -91,46 +100,49 @@ public class SnapController : MonoBehaviour
                     }
                 
                 }
-                else
+                else if(rotationVector.x != 0 && rotationVector.y != 0)
                 {
                     rb.velocity += (rotationVector * speed/2 * Time.deltaTime);
-               
                 }
             }
             else
             {
                 if (rotationVector != Vector3.zero)
                 {
-                    rb.velocity += (rotationVector * (WallSpeed * Time.deltaTime));
+                    if (isDiagonal)
+                    {
+                        rb.velocity += (moveVector * (WallSpeed/1.5f * Time.deltaTime));    
+                    }
+                    else
+                    {
+                        rb.velocity += (moveVector * (WallSpeed * Time.deltaTime));    
+                    }
+                    
                     if (canRotate)
                     {
                         if (wallOrientation == 1)
                         {
-                            Quaternion rotateTo = Quaternion.LookRotation(rotationVector , Vector3.forward);
+                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector , Vector3.back);
                             transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
                         }
                         else if (wallOrientation == 2)
                         {
-                            Quaternion rotateTo = Quaternion.LookRotation(rotationVector, Vector3.left);
+                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector, Vector3.right);
                             transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
                         }
                         else if (wallOrientation == 3)
                         {
-                            Quaternion rotateTo = Quaternion.LookRotation(rotationVector, Vector3.up);
+                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector, Vector3.down);
                             transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
                         }
                         else if (wallOrientation == 4)
                         {
-                            Quaternion rotateTo = Quaternion.LookRotation(rotationVector, Vector3.right);
+                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector, Vector3.left);
                             transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
                         }
                        
                       
                     }
-                }
-                else
-                {
-                    rb.velocity += (rotationVector * speed/2 * Time.deltaTime);
                 }
             }
            

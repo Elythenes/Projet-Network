@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &103936522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 103936523}
+  m_Layer: 6
+  m_Name: EmptyUpPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &103936523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103936522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.57, y: 0.609, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7022110502303692543}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &688637133
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 688637134}
   - component: {fileID: 688637135}
+  - component: {fileID: 688637136}
   m_Layer: 0
   m_Name: QuitWallTrigger
   m_TagString: Untagged
@@ -45,6 +77,119 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.114323, y: 0.14374468, z: 1}
   m_Center: {x: -1.5571617, y: 0.41384503, z: 0}
+--- !u!114 &688637136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688637133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aaeb8b6e47698e45b0f7d7ff3568427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snap: {fileID: 0}
+  UIinteract: {fileID: 0}
+  canClimb: 0
+  emptyClimbPos: {fileID: 103936522}
+  wall: {fileID: 7022110502303692514}
+--- !u!1 &1516827849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516827850}
+  - component: {fileID: 1516827852}
+  - component: {fileID: 1516827853}
+  m_Layer: 6
+  m_Name: EnterWallTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1516827850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516827849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7022110502303692543}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1516827852
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516827849}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.657246, y: 0.14882119, z: 1}
+  m_Center: {x: 3.3278995, y: 0.5067615, z: 0}
+--- !u!114 &1516827853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516827849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eedeb4a5d6cf98141a09d6f594afd931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snap: {fileID: 0}
+  UIinteract: {fileID: 0}
+  canClimb: 0
+  orientation: 3
+  isUp: 1
+  wall: {fileID: 7022110502303692514}
+  emptyDownPos: {fileID: 1872340520}
+--- !u!1 &1872340520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872340521}
+  m_Layer: 6
+  m_Name: EmptyDownPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1872340521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872340520}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.9, y: 0.425, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7022110502303692543}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7022110502303692517
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,8 +203,7 @@ GameObject:
   - component: {fileID: 7022110502303692513}
   - component: {fileID: 7022110502303692514}
   - component: {fileID: 7022110502303692516}
-  - component: {fileID: 1178598404}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SnapWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,6 +223,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 688637134}
+  - {fileID: 1516827850}
+  - {fileID: 103936523}
+  - {fileID: 1872340521}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -147,6 +294,10 @@ MonoBehaviour:
   snap: {fileID: 0}
   UIinteract: {fileID: 0}
   canClimb: 0
+  orientation: 3
+  isUp: 0
+  wall: {fileID: 7022110502303692514}
+  emptyDownPos: {fileID: 1872340520}
 --- !u!65 &7022110502303692516
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,16 +311,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.528171, y: 0.31089297, z: 1}
   m_Center: {x: -5.068635, y: -0.3445556, z: 0}
---- !u!65 &1178598404
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7022110502303692517}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7.9618864, y: 0.17133012, z: 1.0001554}
-  m_Center: {x: 4.455102, y: 0.54218155, z: 0.00007590527}
