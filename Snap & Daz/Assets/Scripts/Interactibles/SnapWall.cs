@@ -6,22 +6,61 @@ using UnityEngine.InputSystem;
 
 public class SnapWall : MonoBehaviour
 {
-   public LayerMask SnapLayer;
-   public CrabeController snap;
-
+   public SnapController snap;
+   public GameObject UIinteract;
    public bool canClimb;
+   public WallOrientation orientation;
+   public bool isUp;
+   public SnapWall wall;
+   public GameObject emptyDownPos;
+public enum WallOrientation
+{
+   Nord,
+   Sud,
+   Est,
+   Ouest
+}
+
    private void Awake()
    {
-      snap = GameObject.Find("SNAP").GetComponent<CrabeController>();
+      snap = GameObject.Find("Snap").GetComponent<SnapController>();
+      wall = GetComponentInParent<SnapWall>();
    }
 
    private void Update()
    {
       if (canClimb)
       {
-         if (Input.GetKeyDown(KeyCode.A))
+         switch (wall.orientation)
          {
-            snap.isWalled = true;
+            case SnapWall.WallOrientation.Nord :
+               emptyDownPos.transform.position = new Vector3(snap.transform.position.x, emptyDownPos.transform.position.y,  emptyDownPos.transform.position.z);
+               break;
+            case SnapWall.WallOrientation.Sud :
+               emptyDownPos.transform.position = new Vector3(snap.transform.position.x, emptyDownPos.transform.position.y,  emptyDownPos.transform.position.z);
+               break;
+            case SnapWall.WallOrientation.Est :
+               emptyDownPos.transform.position = new Vector3( emptyDownPos.transform.position.x,  emptyDownPos.transform.position.y,snap.transform.position.z);
+               break;
+            case SnapWall.WallOrientation.Ouest :
+               emptyDownPos.transform.position = new Vector3(  emptyDownPos.transform.position.x,  emptyDownPos.transform.position.y,snap.transform.position.z);
+               break;
+         }
+         if (Input.GetKeyDown(KeyCode.F))
+         {
+            if (snap.isWalled)
+            {
+               snap.isWalled = false;
+            }
+            else
+            {
+               snap.isWalled = true;  
+               if (isUp)
+               {
+                  snap.transform.position = emptyDownPos.transform.position;
+               }
+            }
+            
          }
       }
    }
@@ -31,7 +70,22 @@ public class SnapWall : MonoBehaviour
    {
       if (other.gameObject.layer == 7)
       {
-         Debug.Log("rentré");
+         switch (orientation)
+         {
+            case WallOrientation.Nord:
+               snap.wallOrientation = 1;
+               break;
+            case WallOrientation.Sud:
+               snap.wallOrientation = 3;
+               break;
+            case WallOrientation.Est:
+               snap.wallOrientation = 2;
+               break;
+            case WallOrientation.Ouest:
+               snap.wallOrientation = 4;
+               break;
+         }
+         UIinteract.SetActive(true);
          canClimb = true;
       }
     
@@ -41,6 +95,7 @@ public class SnapWall : MonoBehaviour
    {
       if (other.gameObject.layer == 7)
       {
+         UIinteract.SetActive(false);
          canClimb = false;
       }
    }
