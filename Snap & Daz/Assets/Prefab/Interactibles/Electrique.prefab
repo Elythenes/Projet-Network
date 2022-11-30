@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3874501432051491460}
   - component: {fileID: 3874501432051491461}
-  - component: {fileID: 3874501432051491462}
+  - component: {fileID: 8025176689204469303}
   m_Layer: 0
   m_Name: Electrique
   m_TagString: Untagged
@@ -48,7 +48,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1637697, y: 1.4900593, z: 1.4129677}
   m_Center: {x: 0.08188486, y: -0.24502975, z: 0.03636551}
---- !u!114 &3874501432051491462
+--- !u!114 &8025176689204469303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,12 +57,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 3874501432051491463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e565e1c9d34bdac45ad66f0d28bc05a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fcde770ecdefbf4eac9d58536db9b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canActive: 0
-  isLocked: 0
-  UIInteract: {fileID: 0}
+  _UIInteract: {fileID: 0}
+  _canActive: 0
+  electricBehaviour:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ElevatorBehaviourThomas, Assembly-CSharp
+        m_MethodName: Electrify
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ElevatorBehaviourThomas, Assembly-CSharp
+        m_MethodName: Electrify
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3874501432246471320
 GameObject:
   m_ObjectHideFlags: 0
