@@ -1,10 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
-using Photon.Pun;
-using Photon.Realtime;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
@@ -14,7 +8,7 @@ public class CameraManager : MonoBehaviour
     
     [Header("Données à trouver")]
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] Transform player;
+    public Transform player;
     public GameObject ping;
     
     [Header("Données à changer")]
@@ -31,15 +25,10 @@ public class CameraManager : MonoBehaviour
     private float timeCinéTimer;
     private float timeCiné;
 
-    private void Awake()
-    {
-        instance = this;
-    }
-
     private void Start()
     {
         PlayerPos = transform.position;
-        cameraOffset = transform.position - player.transform.position;
+        //cameraOffset = transform.position - player.transform.position;
     }
 
     private void FixedUpdate()
@@ -121,5 +110,10 @@ public class CameraManager : MonoBehaviour
         
         transform.position = PlayerPos;
         transform.LookAt(player.transform);
+    }
+
+    public void SetTarget(Transform target)
+    {
+        this.player = target;
     }
 }

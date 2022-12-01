@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8259937909264083830}
   - component: {fileID: 8259937909264083831}
-  - component: {fileID: 8259937909264083828}
+  - component: {fileID: 1779289262815614668}
   m_Layer: 0
   m_Name: Levier
   m_TagString: Untagged
@@ -242,7 +242,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5689602, y: 1.5015848, z: 2.0261807}
   m_Center: {x: 0.2844801, y: -0.25079262, z: -0.050406694}
---- !u!114 &8259937909264083828
+--- !u!114 &1779289262815614668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,14 +251,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 8259937909264083829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b37513a7aa913548a4d71afef546f77, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c3a2f3b67357b74b866100ca61bfea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIInteract: {fileID: 0}
-  isActive: 0
-  canActive: 0
-  plateformeMAIN: {fileID: 0}
-  plateforme2: {fileID: 0}
-  plateformeSpeed: 0.02
-  maxY: 5.4
-  minY: -0.209
+  _UIInteract: {fileID: 0}
+  _canActive: 1
+  leverBehaviour:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ElevatorBehaviourThomas, Assembly-CSharp
+        m_MethodName: MoveElevators
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ElevatorBehaviourThomas, Assembly-CSharp
+        m_MethodName: MoveElevators
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -5,11 +5,11 @@ using DG.Tweening;
 using UnityEngine;
 
 public class ElevatorBehaviour : MonoBehaviour
-{
-    public float timeBetweenFloors = 1;
-    public List<float> floorHeights;
-    public int floor;
-    public bool goingUp = true;
+{public float timeBetweenFloors = 1;
+     public List<float> floorHeights;
+     public int floor;
+     public bool goingUp = true;
+    
 
     public void MoveElevator()
     {
