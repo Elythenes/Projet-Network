@@ -57,7 +57,7 @@ public class DazController : MonoBehaviour
             }
         }
         
-        if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyUp(KeyCode.F))
+        if ((Input.GetKeyDown(KeyCode.F) || Input.GetKeyUp(KeyCode.F)) && activatedElements is not null)
         {
             activatedElements.SwitchActivation();
         }

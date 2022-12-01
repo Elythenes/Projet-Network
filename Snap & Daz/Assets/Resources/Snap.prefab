@@ -146,6 +146,7 @@ MonoBehaviour:
   WallSpeed: 120
   wallGravity: {fileID: 244182196}
   photonView: {fileID: 1623760125735090718}
+  activatedElements: {fileID: 0}
 --- !u!75 &244182196
 ConstantForce:
   m_ObjectHideFlags: 0

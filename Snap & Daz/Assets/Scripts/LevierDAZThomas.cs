@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using Photon.Pun;
 
 public class LevierDAZThomas : ActivatedElements
 {
@@ -7,7 +8,9 @@ public class LevierDAZThomas : ActivatedElements
 
     public UnityEvent leverBehaviour;
 
-    public ActivatedElements activatedElements;
+    private ActivatedElements activatedElements;
+
+    public PhotonView[] photonViews;
 
     void Start()
     {
@@ -18,6 +21,11 @@ public class LevierDAZThomas : ActivatedElements
     {
         if (isActivated)
         {
+            foreach (var photonView in photonViews)
+            {
+                photonView.RequestOwnership();
+            }
+            
             leverBehaviour.Invoke();
             isActivated = false;
         }
@@ -38,6 +46,8 @@ public class LevierDAZThomas : ActivatedElements
         if (other.gameObject.layer == 8)
         {
             _UIInteract.SetActive(false);
+
+            isActivated = false;
 
             other.GetComponent<DazController>().activatedElements = null;
         }
