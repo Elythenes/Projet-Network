@@ -15,6 +15,9 @@ public class DazController : MonoBehaviour
     private float originalSpeed;
     public bool canRotate = true;
 
+    public ActivatedElements activatedElements;
+    
+
     private void Update()
     {
         if (!photonView.IsMine) return;
@@ -52,6 +55,11 @@ public class DazController : MonoBehaviour
                 rb.velocity += (rotationVector * speed/2 * Time.deltaTime);
                
             }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyUp(KeyCode.F))
+        {
+            activatedElements.SwitchActivation();
         }
     }
 }

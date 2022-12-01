@@ -112,6 +112,7 @@ MonoBehaviour:
   rotateSpeed: 720
   speed: 40
   canRotate: 1
+  activatedElements: {fileID: 0}
 --- !u!65 &2506586568567181384
 BoxCollider:
   m_ObjectHideFlags: 0

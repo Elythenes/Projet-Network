@@ -1,4 +1,3 @@
-using System;
 using Photon.Pun;
 using UnityEngine;
 
@@ -22,6 +21,10 @@ public class SnapController : MonoBehaviour
     public float WallSpeed;
     public ConstantForce wallGravity;
     public PhotonView photonView;
+    
+    public ActivatedElements activatedElements;
+    
+    
 
     private void Start()
     {
@@ -161,6 +164,11 @@ public class SnapController : MonoBehaviour
                 }
             }
            
+        }
+
+        if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyUp(KeyCode.F))
+        {
+            activatedElements.SwitchActivation();
         }
     }
 }

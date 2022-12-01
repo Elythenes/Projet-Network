@@ -51,14 +51,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             playButton.SetActive(false);
         }
         
-        // if (isConnected && PhotonNetwork.CurrentRoom.PlayerCount >= 2 && PhotonNetwork.IsMasterClient)
-        // {
-        //     CheckPlayButton();
-        // }
-        
-        if (PhotonNetwork.IsMasterClient)
+        if (isConnected && PhotonNetwork.CurrentRoom.PlayerCount >= 2 && PhotonNetwork.IsMasterClient)
         {
-            playButtonInteract.interactable = true;
+            CheckPlayButton();
         }
     }
 
@@ -76,6 +71,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             playButtonInteract.interactable = true;
         }
+        
         else
         {
             playButtonInteract.interactable = false;

@@ -1,34 +1,31 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
-public class ElectriqueSNAPThomas : MonoBehaviour
+public class ElectriqueSNAPThomas : ActivatedElements
 {
     [SerializeField] private GameObject _UIInteract;
-    public bool _canActive;
 
     public UnityEvent electricBehaviour;
+    
+    public ActivatedElements activatedElements;
 
-    // public void PressF(InputAction.CallbackContext context)
-    // {
-    //     if (context.started && _canActive || context.canceled && _canActive)
-    //     {
-    //         Debug.Log("action du joueur avec l'interrupteur électrique");
-    //         
-    //         electricBehaviour.Invoke();
-    //     }
-    // }
+    void Start()
+    {
+        activatedElements = GetComponent<ActivatedElements>();
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && _canActive)
+        if (isActivated)
         {
             electricBehaviour.Invoke();
+            isActivated = false;
         }
-        if (Input.GetKeyUp(KeyCode.F) && _canActive)
-        {
-            electricBehaviour.Invoke();
-        }
+    }
+
+    public void Activate()
+    {
+        electricBehaviour.Invoke();
     }
     
     public void OnTriggerEnter(Collider other) //Détecte SNAP quand il est proche
@@ -36,7 +33,8 @@ public class ElectriqueSNAPThomas : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
             _UIInteract.SetActive(true);
-            _canActive = true;
+            
+            other.GetComponent<SnapController>().activatedElements = activatedElements;
         }
     } 
 
@@ -45,7 +43,8 @@ public class ElectriqueSNAPThomas : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
             _UIInteract.SetActive(false);
-            _canActive = false;
+            
+            other.GetComponent<SnapController>().activatedElements = null;
         }
     }
 }

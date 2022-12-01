@@ -1,33 +1,25 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
-public class LevierDAZThomas : MonoBehaviour
+public class LevierDAZThomas : ActivatedElements
 {
     [SerializeField] private GameObject _UIInteract;
-    public bool _canActive;
 
     public UnityEvent leverBehaviour;
 
-    // public void PressF(InputAction.CallbackContext context)
-    // {
-    //     if (context.started && _canActive || context.canceled && _canActive)
-    //     {
-    //         Debug.Log("action du joueur avec le levier");
-    //         
-    //         leverBehaviour.Invoke();
-    //     }
-    // }
-    
+    public ActivatedElements activatedElements;
+
+    void Start()
+    {
+        activatedElements = GetComponent<ActivatedElements>();
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && _canActive)
+        if (isActivated)
         {
             leverBehaviour.Invoke();
-        }
-        if (Input.GetKeyUp(KeyCode.F) && _canActive)
-        {
-            leverBehaviour.Invoke();
+            isActivated = false;
         }
     }
 
@@ -36,7 +28,8 @@ public class LevierDAZThomas : MonoBehaviour
         if (other.gameObject.layer == 8)
         {
             _UIInteract.SetActive(true);
-            _canActive = true;
+
+            other.GetComponent<DazController>().activatedElements = activatedElements;
         }
     } 
 
@@ -45,7 +38,8 @@ public class LevierDAZThomas : MonoBehaviour
         if (other.gameObject.layer == 8)
         {
             _UIInteract.SetActive(false);
-            _canActive = false;
+
+            other.GetComponent<DazController>().activatedElements = null;
         }
     } 
 }
