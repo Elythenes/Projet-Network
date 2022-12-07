@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ElevatorBehaviourThomas : MonoBehaviour
@@ -45,6 +46,24 @@ public class ElevatorBehaviourThomas : MonoBehaviour
             {
                 transform.Translate(-direction * (speed * Time.deltaTime));
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 8 || other.gameObject.layer == 7)
+        {
+            Debug.Log(this + "0");
+            other.transform.parent = transform;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 8 || other.gameObject.layer == 7)
+        {
+            Debug.Log(this +"1");
+            other.transform.parent = null;
         }
     }
 }
