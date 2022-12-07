@@ -296,6 +296,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1623760125735090718, guid: db2b2d62a6ff9704398e6f65b34d7957,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4769018261548640455, guid: db2b2d62a6ff9704398e6f65b34d7957,
         type: 3}
       propertyPath: m_Name
@@ -1567,18 +1572,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1899041297 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3874501432051491462, guid: d0c974a38e4011a4f855cda10380cc72,
-    type: 3}
-  m_PrefabInstance: {fileID: 3874501431765168279}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e565e1c9d34bdac45ad66f0d28bc05a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2065488892
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,6 +2049,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5511621184191195479, guid: 9a016ff5e9b21a34ebfeef21f9ef8bd0,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a016ff5e9b21a34ebfeef21f9ef8bd0, type: 3}
 --- !u!1001 &8259937908389202161
@@ -2084,7 +2082,7 @@ PrefabInstance:
         type: 3}
       propertyPath: electriqueAssocie
       value: 
-      objectReference: {fileID: 1899041297}
+      objectReference: {fileID: 0}
     - target: {fileID: 8259937909264083829, guid: 3b0856ebab0d6e347a76b41f82551376,
         type: 3}
       propertyPath: m_Name
