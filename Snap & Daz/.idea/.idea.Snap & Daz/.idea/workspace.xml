@@ -6,15 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="b98b10e0-bcf0-40fe-8aba-18d22e5add15" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Interactibles/Electrique.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Interactibles/Electrique.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Interactibles/Levier.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Interactibles/Levier.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD/Ascenceur.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/LD/Ascenceur.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Daz.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Daz.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/DazUltime.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/DazUltime.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/SnapUltime.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/SnapUltime.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Thomas_Dev_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Thomas_Dev_Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DazController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DazController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ElectriqueSNAPThomas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ElectriqueSNAPThomas.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ElevatorBehaviourThomas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ElevatorBehaviourThomas.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevierDAZThomas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevierDAZThomas.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LobbyConnexion/PlayerSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LobbyConnexion/PlayerSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SnapController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SnapController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +112,8 @@
       <workItem from="1669829758774" duration="4929000" />
       <workItem from="1669885505897" duration="5665000" />
       <workItem from="1670435467872" duration="2398000" />
+      <workItem from="1670577471379" duration="2101000" />
+      <workItem from="1670579628744" duration="5539000" />
     </task>
     <servers />
   </component>

@@ -12,18 +12,28 @@ public class LevierDAZThomas : ActivatedElements
 
     public PhotonView[] photonViews;
 
-    void Start()
+    public bool isElectrified;
+    
+    private void Start()
     {
         activatedElements = GetComponent<ActivatedElements>();
+    }
+    
+    public void Electrify() //Se lit quand un interrupteur électrique bloque les ascenceurs
+    {
+        isElectrified = !isElectrified;
     }
 
     void Update()
     {
         if (isActivated)
         {
-            foreach (var photonView in photonViews)
+            if (!isElectrified)
             {
-                photonView.RequestOwnership();
+                foreach (var photonView in photonViews)
+                {
+                    photonView.RequestOwnership();
+                }
             }
             
             leverBehaviour.Invoke();

@@ -17,28 +17,31 @@ public class DazController : MonoBehaviour
 
     public ActivatedElements activatedElements;
     
+    private bool _isInteracting;
 
     private void Update()
     {
         if (!photonView.IsMine) return;
         
-      
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveZ = Input.GetAxisRaw("Vertical");
-        Debug.DrawRay(transform.position,transform.forward - transform.up,Color.green);
-        if (!Physics.Raycast(transform.position, transform.forward - transform.up,ground))
+        _isInteracting = activatedElements is not null && Input.GetKey(KeyCode.F);
+        
+        // Empêche le déplacement si le joueur intéragit avec un élément
+        if (!_isInteracting) 
         {
-            moveZ = Mathf.Clamp(moveZ, -99, 0);
-            rb.velocity = Vector3.zero;
-        }
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveZ = Input.GetAxisRaw("Vertical");
+            Debug.DrawRay(transform.position,transform.forward - transform.up,Color.green);
+            if (!Physics.Raycast(transform.position, transform.forward - transform.up,ground))
+            {
+                moveZ = Mathf.Clamp(moveZ, -99, 0);
+                rb.velocity = Vector3.zero;
+            }
+            
+            rotationVector = new Vector3(moveX, 0, moveZ);
+            moveVector = new Vector3(moveX, 0, moveZ);
+            rotationVector.Normalize();
+        } 
         
-    
-       
-        rotationVector = new Vector3(moveX, 0, moveZ);
-        moveVector = new Vector3(moveX, 0, moveZ);
-        rotationVector.Normalize();
-        
-
         if (CameraManager.instance is null || !CameraManager.instance.isCinematique)
         {
             if (rotationVector != Vector3.zero)

@@ -23,41 +23,45 @@ public class SnapController : MonoBehaviour
     public PhotonView photonView;
     
     public ActivatedElements activatedElements;
-    
-    
 
-    private void Start()
-    {
-        if (!photonView.IsMine) return;
-        
-        originalSpeed = speed;
-    }
+    private bool _isInteracting;
+    
+    private void Start()                                                
+    {                                                                   
+        if (!photonView.IsMine) return;                                 
+                                                                        
+        originalSpeed = speed;                                          
+    }                                                                   
 
     private void Update()
     {
         if (!photonView.IsMine) return;
-        
+                               
         //Vector3 move;
         //move = playerInput.Player.Move.ReadValue<Vector2>();
-        
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveZ = Input.GetAxisRaw("Vertical");
-        if (moveX != 0 && moveZ != 0)
+
+        _isInteracting = activatedElements is not null && Input.GetKey(KeyCode.F);
+
+        if (!_isInteracting)  // Empêche le déplacement si le joueur intéragit avec un élément
+        {
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveZ = Input.GetAxisRaw("Vertical");
+            if (moveX != 0 && moveZ != 0)
         {
             isDiagonal = true;
         }
-        else
+            else
         {
             isDiagonal = false;
         }
-        Debug.DrawRay(transform.position,transform.forward - transform.up,Color.green);
-        if (!Physics.Raycast(transform.position, transform.forward - transform.up,ground))
-        {
-            moveZ = Mathf.Clamp(moveZ, -99, 0);
-            rb.velocity = Vector3.zero;
-        }
+            Debug.DrawRay(transform.position,transform.forward - transform.up,Color.green);
+            if (!Physics.Raycast(transform.position, transform.forward - transform.up,ground))
+            {
+                moveZ = Mathf.Clamp(moveZ, -99, 0);
+                rb.velocity = Vector3.zero;
+            }
         
-        if (!isWalled)
+            if (!isWalled)
         {
             speed = originalSpeed;
             wallGravity.force = new Vector3(0,0,0);
@@ -65,45 +69,42 @@ public class SnapController : MonoBehaviour
            moveVector = new Vector3(moveX, 0, moveZ);
            rotationVector.Normalize();
         }
-        else
-        {
-            if (wallOrientation == 1)
+            else
             {
-                wallGravity.force = new Vector3(0,0,-80);
-                speed = WallSpeed;
-                rotationVector = new Vector3(-moveX, -moveZ,0);
-                moveVector =  new Vector3(moveX, moveZ,0);
-                rotationVector.Normalize();
+                switch (wallOrientation)
+                {
+                    case 1:
+                        wallGravity.force = new Vector3(0,0,-80);
+                        speed = WallSpeed;
+                        rotationVector = new Vector3(-moveX, -moveZ,0);
+                        moveVector =  new Vector3(moveX, moveZ,0);
+                        rotationVector.Normalize();
+                        break;
+                    case 2:
+                        wallGravity.force = new Vector3(-80,0,0);
+                        speed = WallSpeed;
+                        rotationVector = new Vector3(0, moveX,-moveZ);
+                        moveVector =  new Vector3(0, moveX,moveZ);
+                        rotationVector.Normalize();
+                        break;
+                    case 3:
+                        wallGravity.force = new Vector3(0,0,80);
+                        speed = WallSpeed;
+                        rotationVector = new Vector3(0, -moveX,-moveZ);
+                        moveVector =  new Vector3(0, -moveX,-moveZ);
+                        rotationVector.Normalize();
+                        break;
+                    case 4:
+                        wallGravity.force = new Vector3(80,0,0);
+                        speed = WallSpeed;
+                        rotationVector = new Vector3(0, -moveX,-moveZ);
+                        moveVector =  new Vector3(0, moveX,moveZ);
+                        rotationVector.Normalize();
+                        break;
+                }
             }
-            else if (wallOrientation == 2)
-            {
-                wallGravity.force = new Vector3(-80,0,0);
-                speed = WallSpeed;
-                rotationVector = new Vector3(0, moveX,-moveZ);
-                moveVector =  new Vector3(0, moveX,moveZ);
-                rotationVector.Normalize();
-            }
-            else if (wallOrientation == 3)
-            {
-                wallGravity.force = new Vector3(0,0,80);
-                speed = WallSpeed;
-                rotationVector = new Vector3(0, -moveX,-moveZ);
-                moveVector =  new Vector3(0, -moveX,-moveZ);
-                rotationVector.Normalize();
-            }
-            else if (wallOrientation == 4)
-            {
-                wallGravity.force = new Vector3(80,0,0);
-                speed = WallSpeed;
-                rotationVector = new Vector3(0, -moveX,-moveZ);
-                moveVector =  new Vector3(0, moveX,moveZ);
-                rotationVector.Normalize();
-            }
-            
         }
-       
-       
-
+        
         if (CameraManager.instance is null || !CameraManager.instance.isCinematique)
         {
             if (!isWalled)

@@ -1,17 +1,21 @@
+using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
    public GameObject[] playerPrefabs;
-   public Transform[] spawnPoints;
+   public List<Transform> spawnPoints;
 
    public GameObject camera;
    
    void Start()
    {
-      int randomNumber = Random.Range(0, spawnPoints.Length);
+      int randomNumber = Random.Range(0, spawnPoints.Count);
       Transform spawnPoint = spawnPoints[randomNumber];
+
+      spawnPoints.Remove(spawnPoint);
+      
       GameObject playerToSpawn = playerPrefabs[(int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"]];
       GameObject player = PhotonNetwork.Instantiate(playerToSpawn.name, spawnPoint.position, Quaternion.identity);
       

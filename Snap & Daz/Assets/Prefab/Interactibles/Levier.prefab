@@ -254,8 +254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3a2f3b67357b74b866100ca61bfea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActivated: 0
   _UIInteract: {fileID: 0}
-  _canActive: 1
   leverBehaviour:
     m_PersistentCalls:
       m_Calls:
@@ -283,3 +283,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  photonViews:
+  - {fileID: 0}
+  - {fileID: 0}
+  isElectrified: 0

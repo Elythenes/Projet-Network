@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
+using Photon.Pun;
 
 public class ElectriqueSNAPThomas : ActivatedElements
 {
@@ -9,7 +11,9 @@ public class ElectriqueSNAPThomas : ActivatedElements
     
     public ActivatedElements activatedElements;
 
-    void Start()
+    public PhotonView[] photonViews;
+
+    private void Start()
     {
         activatedElements = GetComponent<ActivatedElements>();
     }
@@ -18,16 +22,16 @@ public class ElectriqueSNAPThomas : ActivatedElements
     {
         if (isActivated)
         {
+            foreach (var photonView in photonViews)
+            {
+                photonView.RequestOwnership();
+            }
+            
             electricBehaviour.Invoke();
             isActivated = false;
         }
     }
 
-    public void Activate()
-    {
-        electricBehaviour.Invoke();
-    }
-    
     public void OnTriggerEnter(Collider other) //Détecte SNAP quand il est proche
     {
         if (other.gameObject.layer == 7)
