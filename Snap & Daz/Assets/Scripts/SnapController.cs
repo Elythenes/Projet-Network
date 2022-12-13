@@ -76,22 +76,8 @@ public class SnapController : MonoBehaviour
                     case 1:
                         wallGravity.force = new Vector3(0,0,-80);
                         speed = WallSpeed;
-                        rotationVector = new Vector3(-moveX, -moveZ,0);
-                        moveVector =  new Vector3(moveX, moveZ,0);
-                        rotationVector.Normalize();
-                        break;
-                    case 2:
-                        wallGravity.force = new Vector3(-80,0,0);
-                        speed = WallSpeed;
-                        rotationVector = new Vector3(0, moveX,-moveZ);
-                        moveVector =  new Vector3(0, moveX,moveZ);
-                        rotationVector.Normalize();
-                        break;
-                    case 3:
-                        wallGravity.force = new Vector3(0,0,80);
-                        speed = WallSpeed;
-                        rotationVector = new Vector3(0, -moveX,-moveZ);
-                        moveVector =  new Vector3(0, -moveX,-moveZ);
+                        rotationVector = new Vector3(-moveX, moveZ,0);
+                        moveVector =  new Vector3(moveX, -moveZ,0);
                         rotationVector.Normalize();
                         break;
                     case 4:
@@ -141,19 +127,10 @@ public class SnapController : MonoBehaviour
                     {
                         if (wallOrientation == 1)
                         {
-                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector , Vector3.left);
+                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector , Vector3.forward);
                             transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
                         }
-                        else if (wallOrientation == 2)
-                        {
-                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector, Vector3.left);
-                            transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
-                        }
-                        else if (wallOrientation == 3)
-                        {
-                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector, Vector3.left);
-                            transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
-                        }
+                      
                         else if (wallOrientation == 4)
                         {
                             Quaternion rotateTo = Quaternion.LookRotation(-rotationVector, Vector3.left);
