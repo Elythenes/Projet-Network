@@ -36,12 +36,12 @@ public enum WallOrientation
             case SnapWall.WallOrientation.Nord :
                emptyDownPos.transform.position = new Vector3(snap.transform.position.x, emptyDownPos.transform.position.y,  emptyDownPos.transform.position.z);
                break;
-            case SnapWall.WallOrientation.Sud :
+           /* case SnapWall.WallOrientation.Sud :
                emptyDownPos.transform.position = new Vector3(snap.transform.position.x, emptyDownPos.transform.position.y,  emptyDownPos.transform.position.z);
                break;
             case SnapWall.WallOrientation.Est :
                emptyDownPos.transform.position = new Vector3( emptyDownPos.transform.position.x,  emptyDownPos.transform.position.y,snap.transform.position.z);
-               break;
+               break;*/
             case SnapWall.WallOrientation.Ouest :
                emptyDownPos.transform.position = new Vector3(  emptyDownPos.transform.position.x,  emptyDownPos.transform.position.y,snap.transform.position.z);
                break;
@@ -54,9 +54,34 @@ public enum WallOrientation
             }
             else
             {
+               if (!isUp)
+               {
+                  switch (wall.orientation)
+                  {
+                     case SnapWall.WallOrientation.Nord :
+                        snap.transform.rotation = new Quaternion();
+                        break;
+                  
+                     case SnapWall.WallOrientation.Ouest :
+                        snap.transform.rotation = new Quaternion(-90,0,90,0);
+                        break;
+                  }
+               }
+               
                snap.isWalled = true;  
                if (isUp)
                {
+                  switch (wall.orientation)
+                  {
+                     case SnapWall.WallOrientation.Nord :
+                        snap.transform.rotation = new Quaternion();
+                        break;
+                  
+                     case SnapWall.WallOrientation.Ouest :
+                        snap.transform.rotation = new Quaternion(90,90,180,0);
+                        break;
+                  }
+                  
                   snap.transform.position = emptyDownPos.transform.position;
                }
             }
