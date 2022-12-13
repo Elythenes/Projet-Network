@@ -13,20 +13,16 @@ public class WaterBehaviour : MonoBehaviour
 
    private void OnTriggerEnter(Collider other)
    {
-      Debug.Log("oui");
       if (other.CompareTag("MainCamera"))
       {
-         Debug.Log("ouiiiiiiiiiii");
          gVolume.weight = 1;
       }
    }
    
    private void OnTriggerExit(Collider other)
    {
-      Debug.Log("oui");
       if (other.CompareTag("MainCamera"))
       {
-         Debug.Log("ouiiiiiiiiiii");
          gVolume.weight = 0;
       }
    }
