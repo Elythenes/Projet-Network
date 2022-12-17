@@ -131,7 +131,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SubstrateDuneHeightMax: 1
-    - _SubstrateGrainHeightMax: 1.31
+    - _SubstrateGrainHeightMax: 1.43
     - _SubstrateTightening: 30
     - _Surface: 0
     - _UvScale: 2.1
