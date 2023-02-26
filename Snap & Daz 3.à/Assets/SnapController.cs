@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SnapController : MonoBehaviour
@@ -7,11 +8,30 @@ public class SnapController : MonoBehaviour
     private float originalSpeed;
     [SerializeField] float rotateSpeed;
     public bool canRotate = true;
-    public bool isDiagonal;
+    private bool isDiagonal;
     public LayerMask ground;
+
+    public enum InputMapType
+    {
+        CoopClavier,
+        ClavierManette,
+        MultiManettes
+    };
+    
+    public enum Player
+    {
+        P1,
+        P2
+    };
+
+    public Player playerNumber;
+    public InputMapType InputMap;
+    
 
     [HideInInspector] public Vector3 rotationVector;
     [HideInInspector] public Vector3 moveVector;
+    private float moveX;
+    private float moveZ;
     
     
     [Header("Variables pour SNAP")]
@@ -26,20 +46,42 @@ public class SnapController : MonoBehaviour
     private void Start()                                                
     {
 
-        originalSpeed = speed;                                          
+        originalSpeed = speed;        
+        
+        
     }                                                                   
 
     private void Update()
     {
-
+    
         //Vector3 move;
         //move = playerInput.Player.Move.ReadValue<Vector2>();
         
 
         if (!_isInteracting)  // Empêche le déplacement si le joueur intéragit avec un élément
         {
-            float moveX = Input.GetAxisRaw("Horizontal");
-            float moveZ = Input.GetAxisRaw("Vertical");
+            switch (InputMap)
+            {
+               case InputMapType.CoopClavier :
+                   if (playerNumber == Player.P1)
+                   {
+                       moveX = Input.GetAxisRaw("Horizontal");
+                       moveZ = Input.GetAxisRaw("Vertical");
+                   }
+                   else if (playerNumber == Player.P2)
+                   {
+                       moveX = Input.GetAxisRaw("Horizontal2");
+                       moveZ = Input.GetAxisRaw("Vertical2");
+                   }
+                   
+                   break;
+               
+               case InputMapType.ClavierManette :
+                    moveX = Input.GetAxisRaw("Horizontal");
+                    moveZ = Input.GetAxisRaw("Vertical");
+                   break;
+            }
+           
             if (moveX != 0 && moveZ != 0)
         {
             isDiagonal = true;
