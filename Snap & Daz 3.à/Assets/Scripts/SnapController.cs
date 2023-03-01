@@ -1,8 +1,27 @@
 using System;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SnapController : MonoBehaviour
 {
+    
+    #region Trucs Chelou pour les Input
+    private PlayerControls inputAction;
+    private void OnEnable()
+    {
+       
+        inputAction.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+      
+        inputAction.Player.Disable();
+    }
+
+    #endregion
+    
     [SerializeField] Rigidbody rb;
     [SerializeField] float speed;
     private float originalSpeed;
@@ -10,7 +29,6 @@ public class SnapController : MonoBehaviour
     public bool canRotate = true;
     private bool isDiagonal;
     public LayerMask ground;
-
     public enum InputMapType
     {
         CoopClavier,
@@ -24,16 +42,33 @@ public class SnapController : MonoBehaviour
         P2
     };
 
+    void Awake()
+    {
+        inputAction = new PlayerControls();
+
+        switch (InputMap)
+             {
+                case InputMapType.CoopClavier :
+               
+                    inputAction.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector3>();
+                    inputAction.Player.Interact.performed += ctx => Interact();
+                    break;
+                
+                case InputMapType.ClavierManette :
+                    break;
+             }
+       
+    }
+
     public Player playerNumber;
     public InputMapType InputMap;
     
 
     [HideInInspector] public Vector3 rotationVector;
     [HideInInspector] public Vector3 moveVector;
-    private float moveX;
-    private float moveZ;
-    
-    
+    public Vector3 moveInput;
+
+
     [Header("Variables pour SNAP")]
     public float wallOrientation; // Orientation du mur dans le sens des aiguilles d'un montre
     public bool isWalled;
@@ -60,7 +95,7 @@ public class SnapController : MonoBehaviour
 
         if (!_isInteracting)  // Empêche le déplacement si le joueur intéragit avec un élément
         {
-            switch (InputMap)
+           /* switch (InputMap)
             {
                case InputMapType.CoopClavier :
                    if (playerNumber == Player.P1)
@@ -80,31 +115,33 @@ public class SnapController : MonoBehaviour
                     moveX = Input.GetAxisRaw("Horizontal");
                     moveZ = Input.GetAxisRaw("Vertical");
                    break;
-            }
+            }*/
            
-            if (moveX != 0 && moveZ != 0)
-        {
-            isDiagonal = true;
-        }
+            if (moveInput.x != 0 && moveInput.z != 0)
+            {
+                isDiagonal = true;
+            }
             else
-        {
-            isDiagonal = false;
-        }
+            {
+                isDiagonal = false;
+            }
+            
             Debug.DrawRay(transform.position,transform.forward - transform.up,Color.green);
+            
             if (!Physics.Raycast(transform.position, transform.forward - transform.up,ground))
             {
-                moveZ = Mathf.Clamp(moveZ, -99, 0);
+                moveInput.z = Mathf.Clamp(moveInput.y, -99, 0);
                 rb.velocity = Vector3.zero;
             }
         
             if (!isWalled)
-        {
-            speed = originalSpeed;
-            wallGravity.force = new Vector3(0,0,0);
-           rotationVector = new Vector3(moveX, 0, moveZ);
-           moveVector = new Vector3(moveX, 0, moveZ);
-           rotationVector.Normalize();
-        }
+            {
+                speed = originalSpeed;
+                wallGravity.force = new Vector3(0,0,0);
+                rotationVector = new Vector3( moveInput.x, 0,  moveInput.y);
+                moveVector = new Vector3(-moveInput.x, 0,  moveInput.y);
+                rotationVector.Normalize();
+            }
             else
             {
                 switch (wallOrientation)
@@ -112,15 +149,15 @@ public class SnapController : MonoBehaviour
                     case 1:
                         wallGravity.force = new Vector3(0,0,-80);
                         speed = WallSpeed;
-                        rotationVector = new Vector3(-moveX, moveZ,0);
-                        moveVector =  new Vector3(moveX, -moveZ,0);
+                        rotationVector = new Vector3(- moveInput.x,  moveInput.y,0);
+                        moveVector =  new Vector3( moveInput.x, - moveInput.y,0);
                         rotationVector.Normalize();
                         break;
                     case 4:
                         wallGravity.force = new Vector3(80,0,0);
                         speed = WallSpeed;
-                        rotationVector = new Vector3(0, -moveX,-moveZ);
-                        moveVector =  new Vector3(0, moveX,moveZ);
+                        rotationVector = new Vector3(0, - moveInput.x,- moveInput.y);
+                        moveVector =  new Vector3(0,  moveInput.x, moveInput.y);
                         rotationVector.Normalize();
                         break;
                 }
@@ -150,11 +187,11 @@ public class SnapController : MonoBehaviour
                 {
                     if (isDiagonal)
                     {
-                        rb.velocity += (moveVector * (WallSpeed/1.5f * Time.deltaTime));    
+                        rb.velocity += (rotationVector * (WallSpeed/1.5f * Time.deltaTime));    
                     }
                     else
                     {
-                        rb.velocity += (moveVector * (WallSpeed * Time.deltaTime));    
+                        rb.velocity += (rotationVector * (WallSpeed * Time.deltaTime));    
                     }
                     
                     if (canRotate)
@@ -175,12 +212,11 @@ public class SnapController : MonoBehaviour
                     }
                 }
             }
-           
-        
+    }
 
-      /*  if ((Input.GetKeyDown(KeyCode.F) || Input.GetKeyUp(KeyCode.F)) && activatedElements is not null)
-        {
-            activatedElements.SwitchActivation();
-        }*/
+
+    public void Interact()
+    {
+        
     }
 }

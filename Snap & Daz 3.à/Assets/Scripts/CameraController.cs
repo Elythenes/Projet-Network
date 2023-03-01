@@ -18,11 +18,10 @@ public class CameraController : MonoBehaviour
     [Header("Zoom")]
     public float minZoom;
     public float maxZoom;
-    private float zoomController = 15;
+    public float zoomController = 15;
     
     [Header("Utilitaire")]
     public float SmoothMoveFactor;
-    public float SmoothRotateFactor;
     public float farNearDistance;
     private bool farCam;
     public List<Transform> targets;
@@ -46,7 +45,7 @@ public class CameraController : MonoBehaviour
     void Zoom()
     {
         float newZoom = Mathf.Lerp(minZoom, maxZoom, GetDistance() / zoomController);
-        camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, newZoom, Time.deltaTime);
+        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, newZoom, Time.deltaTime);
         
         if (GetDistance() >= farNearDistance)
         {
@@ -63,15 +62,13 @@ public class CameraController : MonoBehaviour
         Vector3 centerPoint = GetCenterPoint();
         if (farCam)
         {
-            Vector3 newPosition = centerPoint + farOffset;
+            Vector3 newPosition = centerPoint + offset;
             transform.localPosition = Vector3.SmoothDamp(transform.position,newPosition,ref velocity,SmoothMoveFactor);
-            transform.rotation = Quaternion.Slerp(transform.rotation, farRotation, Time.deltaTime/SmoothRotateFactor);
         }
         else
         {
             Vector3 newPosition = centerPoint + offset;
             transform.localPosition = Vector3.SmoothDamp(transform.position,newPosition,ref velocity,SmoothMoveFactor);
-            transform.rotation = Quaternion.Slerp(transform.rotation, nearRotation,Time.deltaTime/ SmoothRotateFactor);
         }
 
     }
