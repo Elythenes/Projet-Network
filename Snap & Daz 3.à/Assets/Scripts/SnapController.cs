@@ -41,6 +41,12 @@ public class SnapController : MonoBehaviour
         P1,
         P2
     };
+    
+    #region Interaction avec les objets
+
+    public GameObject interactibleObject;
+    
+    #endregion
 
     void Awake()
     {
@@ -74,8 +80,7 @@ public class SnapController : MonoBehaviour
     public bool isWalled;
     public float WallSpeed;
     public ConstantForce wallGravity;
-  
-
+    
     private bool _isInteracting;
     
     private void Start()                                                
@@ -213,10 +218,28 @@ public class SnapController : MonoBehaviour
                 }
             }
     }
-
-
+    
     public void Interact()
     {
+        if (interactibleObject == null) return;
         
+        
+        interactibleObject.GetComponent<Interactible>().Interact();
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Interactible"))
+        {
+            interactibleObject = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Interactible"))
+        {
+            interactibleObject = null;
+        }
     }
 }
