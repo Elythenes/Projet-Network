@@ -8,6 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LD_Elements/Crate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LD_Elements/Door.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LD_Elements/Interactible.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LD_Elements/Lever.cs" root0="FORCE_HIGHLIGHTING" />
@@ -71,7 +72,7 @@
       <updated>1677091346069</updated>
       <workItem from="1677091355542" duration="166000" />
       <workItem from="1677691290989" duration="3555000" />
-      <workItem from="1677706571015" duration="3254000" />
+      <workItem from="1677706571015" duration="4873000" />
     </task>
     <servers />
   </component>

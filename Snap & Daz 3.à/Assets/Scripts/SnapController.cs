@@ -58,6 +58,7 @@ public class SnapController : MonoBehaviour
                
                     inputAction.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector3>();
                     inputAction.Player.Interact.performed += ctx => Interact();
+                    inputAction.Player.Interact.canceled += ctx => StopInteract();
                     break;
                 
                 case InputMapType.ClavierManette :
@@ -222,9 +223,21 @@ public class SnapController : MonoBehaviour
     public void Interact()
     {
         if (interactibleObject == null) return;
-        
-        
-        interactibleObject.GetComponent<Interactible>().Interact();
+
+        var interactible = interactibleObject.GetComponent<Interactible>();
+
+        interactible.actor = gameObject;
+        interactible.Interact();
+    }
+
+    public void StopInteract()
+    {
+        if (interactibleObject == null) return;
+
+        var interactible = interactibleObject.GetComponent<Interactible>();
+
+        interactible.actor = null;
+        interactible.StopInteract();
     }
 
     public void OnTriggerEnter(Collider other)
