@@ -70,7 +70,8 @@ public class SnapController : MonoBehaviour
     public Player playerNumber;
     public InputMapType InputMap;
     
-
+    public float gravityScale;
+    public float globalGravity;
     [HideInInspector] public Vector3 rotationVector;
     [HideInInspector] public Vector3 moveVector;
     public Vector3 moveInput;
@@ -92,6 +93,11 @@ public class SnapController : MonoBehaviour
         
     }                                                                   
 
+   /* private void FixedUpdate()
+    {
+        rb.AddForce(Vector3.down * (gravityScale * globalGravity),ForceMode.Acceleration);
+    }*/
+    
     private void Update()
     {
     
@@ -101,28 +107,6 @@ public class SnapController : MonoBehaviour
 
         if (!_isInteracting)  // Empêche le déplacement si le joueur intéragit avec un élément
         {
-           /* switch (InputMap)
-            {
-               case InputMapType.CoopClavier :
-                   if (playerNumber == Player.P1)
-                   {
-                       moveX = Input.GetAxisRaw("Horizontal");
-                       moveZ = Input.GetAxisRaw("Vertical");
-                   }
-                   else if (playerNumber == Player.P2)
-                   {
-                       moveX = Input.GetAxisRaw("Horizontal2");
-                       moveZ = Input.GetAxisRaw("Vertical2");
-                   }
-                   
-                   break;
-               
-               case InputMapType.ClavierManette :
-                    moveX = Input.GetAxisRaw("Horizontal");
-                    moveZ = Input.GetAxisRaw("Vertical");
-                   break;
-            }*/
-           
             if (moveInput.x != 0 && moveInput.z != 0)
             {
                 isDiagonal = true;
@@ -170,8 +154,8 @@ public class SnapController : MonoBehaviour
             }
         }
         
-            if (!isWalled)
-            {
+        if (!isWalled)
+        {
                 if (rotationVector != Vector3.zero)
                 {
                     rb.velocity += (rotationVector * (speed * Time.deltaTime));
@@ -186,9 +170,9 @@ public class SnapController : MonoBehaviour
                 {
                     rb.velocity += (rotationVector * speed/2 * Time.deltaTime);
                 }
-            }
-            else
-            {
+        }
+        else
+        {
                 if (rotationVector != Vector3.zero)
                 {
                     if (isDiagonal)
@@ -217,7 +201,7 @@ public class SnapController : MonoBehaviour
                       
                     }
                 }
-            }
+        }
     }
     
     public void Interact()
