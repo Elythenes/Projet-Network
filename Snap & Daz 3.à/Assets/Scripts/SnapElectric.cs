@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class SnapElectric : MonoBehaviour
 {
     private PlayerControls inputAction;
+    private SnapController controller;
     
     public enum InputMapType
     {
@@ -31,6 +32,7 @@ public class SnapElectric : MonoBehaviour
     
     void Awake()
     {
+        controller = GetComponent<SnapController>();
         inputAction = new PlayerControls();
 
         switch (InputMap)
@@ -58,12 +60,13 @@ public class SnapElectric : MonoBehaviour
     private void Electric()
     {
         elecZone.SetActive(true);
+        controller.canMove = false;
     }
 
     private void StopElectric()
     {
         elecScript.DisableElements();
-        
+        controller.canMove = true;
         elecZone.SetActive(false);
     }
     

@@ -55,7 +55,6 @@ public class SnapController : MonoBehaviour
         switch (InputMap)
              {
                 case InputMapType.CoopClavier :
-               
                     inputAction.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector3>();
                     inputAction.Player.Interact.performed += ctx => Interact();
                     inputAction.Player.Interact.canceled += ctx => StopInteract();
@@ -80,6 +79,7 @@ public class SnapController : MonoBehaviour
     [Header("Variables pour SNAP")]
     public float wallOrientation; // Orientation du mur dans le sens des aiguilles d'un montre
     public bool isWalled;
+    public bool canMove;
     public float WallSpeed;
     public ConstantForce wallGravity;
     
@@ -156,7 +156,7 @@ public class SnapController : MonoBehaviour
         
         if (!isWalled)
         {
-                if (rotationVector != Vector3.zero)
+                if (rotationVector != Vector3.zero && canMove)
                 {
                     rb.velocity += (rotationVector * (speed * Time.deltaTime));
                     if (canRotate)
@@ -166,14 +166,14 @@ public class SnapController : MonoBehaviour
                     }
                 
                 }
-                else if(rotationVector.x != 0 && rotationVector.y != 0)
+                else if(rotationVector.x != 0 && rotationVector.y != 0 && canMove)
                 {
                     rb.velocity += (rotationVector * speed/2 * Time.deltaTime);
                 }
         }
         else
         {
-                if (rotationVector != Vector3.zero)
+                if (rotationVector != Vector3.zero && canMove)
                 {
                     if (isDiagonal)
                     {
