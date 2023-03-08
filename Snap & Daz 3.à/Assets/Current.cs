@@ -43,7 +43,7 @@ public class Current : MonoBehaviour
             else
             {
                 Debug.Log("affected by current");
-                snapRB.AddForce(currentDirection*currentForce*Time.deltaTime);
+                snapRB.AddForce(currentDirection*currentForce);
             }
             
             Debug.DrawRay(other.transform.position, - currentDirection * distance, Color.red);
