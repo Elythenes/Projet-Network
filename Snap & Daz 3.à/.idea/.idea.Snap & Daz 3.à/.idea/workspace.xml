@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6309e171-ecb4-400b-99af-9f0531369aed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Door.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz 3.à/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz 3.à/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/YellowElectrify.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/YellowElectrify.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Préfab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Daz.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Daz.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Oui.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Oui.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Snap.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Snap.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Thomas.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Thomas.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Crate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Crate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Interactible.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Interactible.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Lever.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Lever.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +81,7 @@
       <workItem from="1677691290989" duration="3555000" />
       <workItem from="1677706571015" duration="4873000" />
       <workItem from="1678296243305" duration="680000" />
-      <workItem from="1678353077163" duration="351000" />
+      <workItem from="1678353077163" duration="4057000" />
     </task>
     <servers />
   </component>
