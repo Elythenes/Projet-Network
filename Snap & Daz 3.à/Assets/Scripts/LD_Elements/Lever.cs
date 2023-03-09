@@ -33,6 +33,11 @@ public class Lever : Interactible
       StartCoroutine(Cooldown());
    }
 
+   public override void StopInteract()
+   {
+      
+   }
+
    private IEnumerator Cooldown()
    {
       yield return new WaitForSeconds(cooldown);

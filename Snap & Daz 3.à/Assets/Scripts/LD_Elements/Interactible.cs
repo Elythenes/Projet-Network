@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Interactible : MonoBehaviour
 {
-    [HideInInspector] public bool isInteracted;
+    public bool isInteracted;
 
     [HideInInspector] public GameObject actor;
 
-    protected bool canBeInteracted = true;
+    public bool canBeInteracted = true;
 
     public virtual void Interact()
     {

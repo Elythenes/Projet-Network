@@ -28,7 +28,7 @@ public class Door : Activable
     {
         base.Desactivate();
 
-        Debug.Log("Desctivation");
+        Debug.Log("Desactivation");
 
         StartCoroutine(Move(endingPos, startingPos, travelTime));
     }
