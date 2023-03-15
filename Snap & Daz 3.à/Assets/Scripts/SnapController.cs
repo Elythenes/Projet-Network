@@ -7,17 +7,17 @@ public class SnapController : MonoBehaviour
 {
     
     #region Trucs Chelou pour les Input
-    private PlayerControls inputAction;
+   // private PlayerControls inputAction;
     private void OnEnable()
     {
        
-        inputAction.Player.Enable();
+        //inputAction.Player.Enable();
     }
 
     private void OnDisable()
     {
       
-        inputAction.Player.Disable();
+        //inputAction.Player.Disable();
     }
 
     #endregion
@@ -29,18 +29,9 @@ public class SnapController : MonoBehaviour
     public bool canRotate = true;
     private bool isDiagonal;
     public LayerMask ground;
-    public enum InputMapType
-    {
-        CoopClavier,
-        ClavierManette,
-        MultiManettes
-    };
+  
     
-    public enum Player
-    {
-        P1,
-        P2
-    };
+   
     
     #region Interaction avec les objets
 
@@ -50,35 +41,20 @@ public class SnapController : MonoBehaviour
 
     void Awake()
     {
-        inputAction = new PlayerControls();
-
-        switch (InputMap)
-             {
-                case InputMapType.CoopClavier :
-                    inputAction.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector3>();
-                    inputAction.Player.Interact.performed += ctx => Interact();
-                    inputAction.Player.Interact.canceled += ctx => StopInteract();
-                    break;
-                
-                case InputMapType.ClavierManette :
-                    break;
-             }
-       
+        //inputAction = new PlayerControls();
+        
+        //inputAction.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector3>();
+        //inputAction.Player.Interact.performed += ctx => Interact();
+        //inputAction.Player.Interact.canceled += ctx => StopInteract();
     }
 
-    public Player playerNumber;
-    public InputMapType InputMap;
-    
     public float gravityScale;
     public float globalGravity;
-    [HideInInspector] public Vector3 rotationVector;
-    [HideInInspector] public Vector3 moveVector;
     public Vector3 moveInput;
 
 
     [Header("Variables pour SNAP")]
     public float wallOrientation; // Orientation du mur dans le sens des aiguilles d'un montre
-    public bool isWalled;
     public bool canMove;
     public float WallSpeed;
     public ConstantForce wallGravity;
@@ -87,25 +63,19 @@ public class SnapController : MonoBehaviour
     
     private void Start()                                                
     {
-
-        originalSpeed = speed;        
-        
-        
+        originalSpeed = speed;
     }                                                                   
 
-   /* private void FixedUpdate()
-    {
-        rb.AddForce(Vector3.down * (gravityScale * globalGravity),ForceMode.Acceleration);
-    }*/
-    
+ 
+
     private void Update()
     {
-    
+
         //Vector3 move;
         //move = playerInput.Player.Move.ReadValue<Vector2>();
-        
 
-        if (!_isInteracting)  // Empêche le déplacement si le joueur intéragit avec un élément
+
+        if (!_isInteracting) // Empêche le déplacement si le joueur intéragit avec un élément
         {
             if (moveInput.x != 0 && moveInput.z != 0)
             {
@@ -115,95 +85,38 @@ public class SnapController : MonoBehaviour
             {
                 isDiagonal = false;
             }
-            
-            Debug.DrawRay(transform.position,transform.forward - transform.up,Color.green);
-            
-            if (!Physics.Raycast(transform.position, transform.forward - transform.up,ground))
+
+            Debug.DrawRay(transform.position, transform.forward - transform.up, Color.green);
+
+            if (!Physics.Raycast(transform.position, transform.forward - transform.up, ground))
             {
                 moveInput.z = Mathf.Clamp(moveInput.y, -99, 0);
                 rb.velocity = Vector3.zero;
             }
-        
-            if (!isWalled)
-            {
-                speed = originalSpeed;
-                wallGravity.force = new Vector3(0,0,0);
-                rotationVector = new Vector3( moveInput.x, 0,  moveInput.y);
-                moveVector = new Vector3(-moveInput.x, 0,  moveInput.y);
-                rotationVector.Normalize();
-            }
-            else
-            {
-                switch (wallOrientation)
-                {
-                    case 1:
-                        wallGravity.force = new Vector3(0,0,-80);
-                        speed = WallSpeed;
-                        rotationVector = new Vector3(- moveInput.x,  moveInput.y,0);
-                        moveVector =  new Vector3( moveInput.x, - moveInput.y,0);
-                        rotationVector.Normalize();
-                        break;
-                    case 4:
-                        wallGravity.force = new Vector3(80,0,0);
-                        speed = WallSpeed;
-                        rotationVector = new Vector3(0, - moveInput.x,- moveInput.y);
-                        moveVector =  new Vector3(0,  moveInput.x, moveInput.y);
-                        rotationVector.Normalize();
-                        break;
-                }
-            }
+
+            speed = originalSpeed;
+            wallGravity.force = new Vector3(0, 0, 0);
         }
         
-        if (!isWalled)
+        if (moveInput != Vector3.zero && canMove)
         {
-                if (rotationVector != Vector3.zero && canMove)
+                rb.velocity += (moveInput * (speed * Time.deltaTime));
+                if (canRotate)
                 {
-                    rb.velocity += (rotationVector * (speed * Time.deltaTime));
-                    if (canRotate)
-                    {
-                        Quaternion rotateTo = Quaternion.LookRotation(rotationVector,Vector3.up);
-                        transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime);
-                    }
-                
+                    Quaternion rotateTo = Quaternion.LookRotation(moveInput, Vector3.up);
+                    transform.rotation =
+                        Quaternion.RotateTowards(transform.rotation, rotateTo, rotateSpeed * Time.deltaTime);
                 }
-                else if(rotationVector.x != 0 && rotationVector.y != 0 && canMove)
-                {
-                    rb.velocity += (rotationVector * speed/2 * Time.deltaTime);
-                }
+
         }
-        else
+        else if (moveInput.x != 0 && moveInput.y != 0 && canMove)
         {
-                if (rotationVector != Vector3.zero && canMove)
-                {
-                    if (isDiagonal)
-                    {
-                        rb.velocity += (rotationVector * (WallSpeed/1.5f * Time.deltaTime));    
-                    }
-                    else
-                    {
-                        rb.velocity += (rotationVector * (WallSpeed * Time.deltaTime));    
-                    }
-                    
-                    if (canRotate)
-                    {
-                        if (wallOrientation == 1)
-                        {
-                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector , Vector3.forward);
-                            transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
-                        }
-                      
-                        else if (wallOrientation == 4)
-                        {
-                            Quaternion rotateTo = Quaternion.LookRotation(-rotationVector, Vector3.left);
-                            transform.rotation = Quaternion.RotateTowards(transform.rotation,rotateTo,rotateSpeed * Time.deltaTime); 
-                        }
-                       
-                      
-                    }
-                }
-        }
+            rb.velocity += (moveInput * speed / 2 * Time.deltaTime);
+        } 
     }
+
     
+
     public void Interact()
     {
         if (interactibleObject == null) return;

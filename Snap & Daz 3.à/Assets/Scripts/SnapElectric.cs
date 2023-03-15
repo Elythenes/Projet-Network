@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class SnapElectric : MonoBehaviour
 {
-    private PlayerControls inputAction;
+    //private PlayerControls inputAction;
     private SnapController controller;
     
     public enum InputMapType
@@ -19,13 +19,13 @@ public class SnapElectric : MonoBehaviour
     private void OnEnable()
     {
        
-        inputAction.Player.Enable();
+        //inputAction.Player.Enable();
     }
 
     private void OnDisable()
     {
       
-        inputAction.Player.Disable();
+        //inputAction.Player.Disable();
     }
     
     public InputMapType InputMap;
@@ -33,14 +33,14 @@ public class SnapElectric : MonoBehaviour
     void Awake()
     {
         controller = GetComponent<SnapController>();
-        inputAction = new PlayerControls();
+        //inputAction = new PlayerControls();
 
         switch (InputMap)
         {
             case InputMapType.CoopClavier :
                 
-                inputAction.Player.Special.performed += ctx => Electric();
-                inputAction.Player.Special.canceled += ctx => StopElectric();
+                //inputAction.Player.Special.performed += ctx => Electric();
+                //inputAction.Player.Special.canceled += ctx => StopElectric();
                 break;
                 
             case InputMapType.ClavierManette :
