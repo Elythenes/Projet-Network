@@ -7,6 +7,7 @@ TagManager:
   - Snap
   - Interactible
   - Electric
+  - Daz
   layers:
   - Default
   - TransparentFX
