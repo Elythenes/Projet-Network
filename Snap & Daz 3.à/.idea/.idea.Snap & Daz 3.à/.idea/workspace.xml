@@ -3,23 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="6309e171-ecb4-400b-99af-9f0531369aed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz 3.à/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz 3.à/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Material/YellowElectrify.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Material/YellowElectrify.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Préfab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Daz.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Daz.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Oui.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Oui.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Snap.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Préfab/Snap.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Bobine électrique.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Bobine électrique.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Door.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Door.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Lever.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Lever.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD Elements/PullingHandle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/LD Elements/PullingHandle.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Thomas.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Thomas.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Crate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Crate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Bobine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Generator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Bobine.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Generator.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/MovingElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Door.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/MovingElement.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Electric.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Electric.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Interactible.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Interactible.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Lever.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Lever.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/PullingHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/PullingHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LD_Elements/PressurePlate.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -82,6 +89,7 @@
       <workItem from="1677706571015" duration="4873000" />
       <workItem from="1678296243305" duration="680000" />
       <workItem from="1678353077163" duration="4057000" />
+      <workItem from="1678903497807" duration="5126000" />
     </task>
     <servers />
   </component>

@@ -116,3 +116,4 @@ MonoBehaviour:
   pulledElements:
   - {fileID: 0}
   startingPos: []
+  direction: 4

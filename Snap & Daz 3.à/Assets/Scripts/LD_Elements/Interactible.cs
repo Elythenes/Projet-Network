@@ -10,14 +10,12 @@ public class Interactible : MonoBehaviour
 
     public virtual void Interact()
     {
-        Debug.Log("Interact");
         isInteracted = !isInteracted;
         canBeInteracted = false;
     }
 
     public virtual void StopInteract()
     {
-        Debug.Log("StopInteract");
         isInteracted = false;
         canBeInteracted = false;
     }

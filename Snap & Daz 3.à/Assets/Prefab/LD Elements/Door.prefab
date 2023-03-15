@@ -111,6 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActivated: 0
-  startingPos: {x: 0, y: 0, z: 0}
-  endingPos: {x: 4, y: 10, z: 12}
-  travelTime: 2
+  endingPos: {x: -14, y: 10, z: 0}
+  travelTime: 3
