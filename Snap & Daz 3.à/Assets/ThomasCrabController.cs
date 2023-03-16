@@ -61,8 +61,6 @@ public class ThomasCrabController : MonoBehaviour
             var targetRotation = Quaternion.LookRotation(move);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
-            
-            //transform.LookAt(transform.position + move);
         }
 
         if (!canMove) return;

@@ -3,16 +3,31 @@
   <component name="ChangeListManager">
     <list default="true" id="6309e171-ecb4-400b-99af-9f0531369aed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz 3.à/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz 3.à/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Lever.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Lever.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Pressure Plate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Pressure Plate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/Daz.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/Daz.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/Ground.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/LD Elements/Crate.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/LD Elements/Crate.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/LD Elements/Door.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/LD Elements/Door.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/LD Elements/Electric Coil.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/LD Elements/Electric Coil.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/LD Elements/Elevator.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/LD Elements/Elevator.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/LD Elements/Generator.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/LD Elements/Generator.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/LD Elements/Hatchway.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/LD Elements/Hatchway.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/LD Elements/Lever.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/LD Elements/Lever.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/LD Elements/Moving Bridge.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/LD Elements/Moving Bridge.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/LD Elements/Pressure Plate.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/LD Elements/Pressure Plate.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/LD Elements/Pulling Handle.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/LD Elements/Pulling Handle.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/LD Elements/YellowElectrify.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/LD Elements/YellowElectrify.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/Opaque Blue.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/Opaque Blue.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/River.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/River.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/Snap.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/Snap.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/SnapElectric.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/SnapElectric.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/Wall.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/Wall.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Generator.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Generator.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestLocal.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestLocal.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Activable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Activable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Interactible.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Interactible.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Lever.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Lever.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/PullingHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/PullingHandle.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ThomasCrabController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ThomasCrabController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +102,8 @@
       <workItem from="1678296243305" duration="680000" />
       <workItem from="1678353077163" duration="4057000" />
       <workItem from="1678903497807" duration="5126000" />
-      <workItem from="1678958178086" duration="6334000" />
+      <workItem from="1678958178086" duration="6959000" />
+      <workItem from="1678981215160" duration="313000" />
     </task>
     <servers />
   </component>
