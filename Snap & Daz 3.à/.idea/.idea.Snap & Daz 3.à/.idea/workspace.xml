@@ -3,8 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="6309e171-ecb4-400b-99af-9f0531369aed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz 3.à/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz 3.à/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CrabController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CrabController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Lever.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Lever.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Pressure Plate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/LD Elements/Pressure Plate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TestLocal.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TestLocal.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Activable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Activable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Interactible.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Interactible.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Lever.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/Lever.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/PullingHandle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/PullingHandle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ThomasCrabController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ThomasCrabController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,6 +20,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/DazSpecial.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LD_Elements/PressurePlate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SnapSpecial.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ThomasCrabController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -79,7 +87,7 @@
       <workItem from="1678296243305" duration="680000" />
       <workItem from="1678353077163" duration="4057000" />
       <workItem from="1678903497807" duration="5126000" />
-      <workItem from="1678958178086" duration="3493000" />
+      <workItem from="1678958178086" duration="6334000" />
     </task>
     <servers />
   </component>

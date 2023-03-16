@@ -1,8 +1,13 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ThomasCrabController : MonoBehaviour
 {
+    public Crab activeCrab;
+    private bool isSnap;
+    
     private LayerMask ground = 3;
     
     private Vector3 move;
@@ -36,6 +41,19 @@ public class ThomasCrabController : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        switch (activeCrab)
+        {
+            case Crab.Snap :
+                isSnap = true;
+                break;
+            case Crab.Daz :
+                isSnap = false;
+                break;
+        }
+    }
+    
     void Update()
     {
         if (canRotate && move != Vector3.zero)
@@ -57,6 +75,8 @@ public class ThomasCrabController : MonoBehaviour
         if (interactibleObject == null) return;
 
         var interactible = interactibleObject.GetComponent<Interactible>();
+
+        if ((interactible.onlyUsableByDaz && isSnap) || (interactible.onlyUsableBySnap && !isSnap)) return;
 
         interactible.actor = gameObject;
         interactible.Interact();
@@ -87,4 +107,11 @@ public class ThomasCrabController : MonoBehaviour
             interactibleObject = null;
         }
     }
+}
+
+[Serializable]
+public enum Crab
+{
+    Snap,
+    Daz
 }

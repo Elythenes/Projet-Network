@@ -110,9 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b641f5da493ab534bb63897203cafae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usableBy: 0
+  canBeInteracted: 1
   isInteracted: 0
   actor: {fileID: 0}
-  canBeInteracted: 1
+  onlyUsableByDaz: 0
+  onlyUsableBySnap: 0
   activatedElements:
   - {fileID: 0}
-  cooldown: 3
+  cooldown: 1

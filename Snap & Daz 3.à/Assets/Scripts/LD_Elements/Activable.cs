@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Activable : MonoBehaviour
 {
-    public bool isActivated;
+    [HideInInspector] public bool isActivated;
 
     public virtual void Activate()
     {

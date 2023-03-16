@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PullingHandle : Interactible
 {
-    public List<GameObject> pulledElements;
+    [Tooltip("Détermine les objets tirés par la poignée")] public List<GameObject> pulledElements;
     [HideInInspector] public List<Vector3> startingPos;
 
     private Vector3 startPos;
 
-    [Tooltip("Détermine la direction vers laquelle l'objet tiré se déplace, par rapport au monde")]
+    [Tooltip("Détermine la direction vers laquelle les objets tirés se déplacent, par rapport au monde")]
     public Vectors direction;
 
     private Vector3 dir;
