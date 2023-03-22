@@ -13,6 +13,7 @@ public class MovingElement : Activable
     private Vector3 currentPos;
 
     private Coroutine co;
+    [HideInInspector] public bool cantMove;
 
     private float reTravelTime;
 
@@ -25,12 +26,9 @@ public class MovingElement : Activable
     {
         base.Activate();
 
-        Debug.Log("Activation");
+        StopCo();
 
-        if (co != null)
-        {
-            StopCoroutine(co);
-        }
+        if (isElectrified) return;
 
         reTravelTime = Vector3.Distance(endingPos, currentPos) / Vector3.Distance(endingPos, startingPos) * travelTime;
         
@@ -41,10 +39,10 @@ public class MovingElement : Activable
     {
         base.Desactivate();
 
-        if (co != null)
-        {
-            StopCoroutine(co);
-        }
+        StopCo();
+        
+        if (isElectrified) return;
+        if (cantMove) return;
         
         reTravelTime = Vector3.Distance(startingPos, currentPos) / Vector3.Distance(endingPos, startingPos) * travelTime;
         
@@ -63,5 +61,34 @@ public class MovingElement : Activable
     void Update()
     {
         currentPos = transform.position;
+    }
+
+    public override void Electrify()
+    {
+        base.Electrify();
+        
+        StopCo();
+    }
+
+    public override void DesElectrify()
+    {
+        base.DesElectrify();
+
+        if (isActivated)
+        {
+            Activate();
+        }
+        else
+        {
+            Desactivate();
+        }
+    }
+
+    public void StopCo()
+    {
+        if (co != null)
+        {
+            StopCoroutine(co);
+        }
     }
 }

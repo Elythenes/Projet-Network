@@ -4,33 +4,31 @@ using UnityEngine;
 
 public class PullingHandle : Interactible
 {
-    [Tooltip("Détermine les objets tirés par la poignée")] public List<GameObject> pulledElements;
-    [HideInInspector] public List<Vector3> startingPos;
-
     private Vector3 startPos;
 
-    [Tooltip("Détermine la direction vers laquelle les objets tirés se déplacent, par rapport au monde")]
-    public Vectors direction;
-
-    private Vector3 dir;
+    [Tooltip("Glissez les divers éléments à déplacer, et pour chacun indiquer la direction dans laquelle il doit se déplacer")]
+    public List<PulledElements> pulledElements;
 
     void Start()
     {
-        dir = direction switch
+        for (int i = 0; i < pulledElements.Count; i++)
         {
-            Vectors.up => Vector3.up,
-            Vectors.down => Vector3.down,
-            Vectors.back => Vector3.back,
-            Vectors.forward => Vector3.forward,
-            Vectors.left => Vector3.left,
-            Vectors.right => Vector3.right,
-        };
-
-        startPos = transform.position;
-
-        foreach (var t in pulledElements)
-        {
-            startingPos.Add(t.transform.position);
+            pulledElements[i].dir = pulledElements[i].direction switch
+            {
+                Vectors.up => Vector3.up,
+                Vectors.down => Vector3.down,
+                Vectors.back => Vector3.back,
+                Vectors.forward => Vector3.forward,
+                Vectors.left => Vector3.left,
+                Vectors.right => Vector3.right,
+            };
+            
+            startPos = transform.position;
+            
+            foreach (var t in pulledElements)
+            {
+                t.startPos = t.element.transform.position;
+            }
         }
     }
 
@@ -50,13 +48,22 @@ public class PullingHandle : Interactible
     {
         for (int i = 0; i < pulledElements.Count; i++)
         {
-            pulledElements[i].transform.position = startingPos[i] + dir * Vector3.Distance(transform.position, startPos);
+            pulledElements[i].element.transform.position = pulledElements[i].startPos + pulledElements[i].dir * Vector3.Distance(transform.position, startPos);
         }
 
         if (isInteracted) return; // Faire revenir la poignée si elle n'est pas utilisée
 
         transform.position = Vector3.MoveTowards(transform.position, startPos, Time.deltaTime * 5f);
     }
+}
+
+[Serializable]
+public class PulledElements
+{
+    public GameObject element;
+    public Vectors direction;
+    [HideInInspector] public Vector3 dir;
+    [HideInInspector] public Vector3 startPos;
 }
 
 [Serializable]

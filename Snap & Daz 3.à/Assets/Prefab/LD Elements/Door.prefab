@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4573045859548141430}
   - component: {fileID: 4573045859548141429}
   - component: {fileID: 4573045859548141428}
+  - component: {fileID: 1956552200}
+  - component: {fileID: 1956552201}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -111,5 +113,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActivated: 0
-  endingPos: {x: -14, y: 10, z: 0}
+  isElectrified: 0
+  endingPos: {x: 12, y: 10, z: -8.5}
   travelTime: 3
+  cantMove: 0
+--- !u!65 &1956552200
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573045859548141427}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.986497, y: 0.15178156, z: 0.8104326}
+  m_Center: {x: 0, y: -0.50853086, z: 0}
+--- !u!114 &1956552201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573045859548141427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36aaa1f7682de04689c9406ff78168b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsUnder: []
