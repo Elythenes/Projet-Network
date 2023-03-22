@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6100493891731673591}
   - component: {fileID: 6100493891731673584}
+  - component: {fileID: 1954259728}
   m_Layer: 0
   m_Name: "Poign\xE9e \xE0 tirer"
   m_TagString: Interactible
@@ -51,7 +52,36 @@ MonoBehaviour:
   actor: {fileID: 0}
   onlyUsableByDaz: 0
   onlyUsableBySnap: 0
-  pulledElements: []
+  pulledElements:
+  - element: {fileID: 0}
+    direction: 0
+    dir: {x: 0, y: 0, z: 0}
+    startPos: {x: 0, y: 0, z: 0}
+  - element: {fileID: 0}
+    direction: 2
+    dir: {x: 0, y: 0, z: 0}
+    startPos: {x: 0, y: 0, z: 0}
+  - element: {fileID: 0}
+    direction: 3
+    dir: {x: 0, y: 0, z: 0}
+    startPos: {x: 0, y: 0, z: 0}
+  - element: {fileID: 0}
+    direction: 4
+    dir: {x: 0, y: 0, z: 0}
+    startPos: {x: 0, y: 0, z: 0}
+--- !u!65 &1954259728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100493891731673590}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.28, y: 0.2, z: 1.59}
+  m_Center: {x: 2.51, y: 0, z: 0}
 --- !u!1001 &6100493891881299689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77,7 +107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 197b26d5a0b1fed458526a2d882a0f14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.74
+      value: 3.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 197b26d5a0b1fed458526a2d882a0f14, type: 3}
       propertyPath: m_LocalPosition.y
@@ -85,7 +115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 197b26d5a0b1fed458526a2d882a0f14, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.59000003
+      value: -0.59
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 197b26d5a0b1fed458526a2d882a0f14, type: 3}
       propertyPath: m_LocalRotation.w
@@ -133,24 +163,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 73bfa702137cdf64f882dd8f210263ba, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 197b26d5a0b1fed458526a2d882a0f14, type: 3}
---- !u!1 &132113140302480114 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6159819195323411483, guid: 197b26d5a0b1fed458526a2d882a0f14, type: 3}
-  m_PrefabInstance: {fileID: 6100493891881299689}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &6100493891881299685
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132113140302480114}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 9.480897, y: 0.32425526, z: 0.32425523}
-  m_Center: {x: 0.0000007152557, y: 0.00000000745058, z: -0.000000074505806}
 --- !u!4 &5990904204669683970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 197b26d5a0b1fed458526a2d882a0f14, type: 3}

@@ -89,6 +89,7 @@ public class ThomasCrabController : MonoBehaviour
         }
         
         if (!canMove) return;
+        
         if (move!= Vector3.zero) 
         {
             if (canMoveBackward)

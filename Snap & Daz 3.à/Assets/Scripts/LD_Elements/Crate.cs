@@ -4,6 +4,7 @@ using UnityEngine;
 public class Crate : Interactible
 {
     private Vector3 playerDir;
+    
     public override void Interact()
     {
         base.Interact();
