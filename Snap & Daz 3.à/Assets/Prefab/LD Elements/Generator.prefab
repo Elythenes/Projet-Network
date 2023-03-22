@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074ff918479249409d643f6f831b008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueMaterial: {fileID: 2100000, guid: 88580998b34a6f649bb078593ce23ec1, type: 2}
+  blueMaterial: {fileID: 2100000, guid: 0cd4d4a7238ee7a43bc77c38ce6ed1ed, type: 2}
   yellowMaterial: {fileID: 2100000, guid: 7efa7c4d2e3791f4788a9cc94f5bd58d, type: 2}
   activatedElements:
   - {fileID: 0}
