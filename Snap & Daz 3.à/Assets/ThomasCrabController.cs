@@ -7,6 +7,8 @@ public class ThomasCrabController : MonoBehaviour
 {
     public Crab activeCrab;
     private bool isSnap;
+
+    public Rigidbody rb;
     
     private LayerMask ground = 3;
     
@@ -19,6 +21,8 @@ public class ThomasCrabController : MonoBehaviour
     public float rotateSpeed;
     
     public GameObject interactibleObject;
+
+    [HideInInspector] public bool canMoveBackward;
     
     public void OnMove(InputAction.CallbackContext ctx)
     {
@@ -56,16 +60,35 @@ public class ThomasCrabController : MonoBehaviour
     
     void Update()
     {
-        if (canRotate && move != Vector3.zero)
+        if (!canMove) return;
+        
+        if (move!= Vector3.zero)
         {
             var targetRotation = Quaternion.LookRotation(move);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+            if (canRotate)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+            }
+            
+            if (canMoveBackward)
+            {
+                Debug.DrawRay(transform.position, transform.forward * 3, Color.black);
+                Debug.DrawRay(transform.position, move * 3, Color.red);
+                if (Vector3.Angle(transform.forward, move) < 90)
+                {
+                    rb.MovePosition(transform.position + transform.forward * move.magnitude * speed * Time.deltaTime);
+                }
+                else
+                {
+                    rb.MovePosition(transform.position - transform.forward * move.magnitude * speed * Time.deltaTime);
+                }
+            }
+            else
+            {
+                rb.MovePosition(transform.position + transform.forward * move.magnitude * speed * Time.deltaTime);
+            }
         }
-
-        if (!canMove) return;
-
-        transform.Translate(Vector3.forward * (move.magnitude * speed * Time.deltaTime), Space.Self);
     }
 
     private void Interact()
