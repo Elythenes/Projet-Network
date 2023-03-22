@@ -11,7 +11,7 @@ public class Electric : MonoBehaviour
         {
             isElectrified = value;
 
-            if (isElectrified == true)
+            if (isElectrified)
             {
                 Electrify();
             }

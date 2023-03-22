@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,18 +6,16 @@ using UnityEngine;
 public class Lever : Interactible
 {
    [Header("Interaction")] 
-   public List<Activable> activatedElements;
+   [Tooltip("Glissez tous les éléments qui sont activés par le levier")] public List<Activable> activatedElements;
 
    [Header("Cooldown")]
-   public float cooldown;
+   [Tooltip("Détermine le temps avant que le levier puisse à nouveau être utilisé")] public float cooldown;
 
    public override void Interact()
    {
       if (!canBeInteracted) return;
       
       base.Interact();
-
-      Debug.Log("Interaction");
 
       foreach (var obj in activatedElements)
       {

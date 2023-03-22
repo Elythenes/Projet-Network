@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5350588824826691083
+--- !u!1 &5381557661178523999
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5350588824826691078}
-  - component: {fileID: 5350588824826691079}
-  - component: {fileID: 5350588824826691076}
-  - component: {fileID: 5350588824826691077}
-  - component: {fileID: 5350588824826691082}
+  - component: {fileID: 5381557661178523971}
+  - component: {fileID: 5381557661178523970}
+  - component: {fileID: 5381557661178523997}
+  - component: {fileID: 5381557661178523996}
+  - component: {fileID: 760924073516698674}
+  - component: {fileID: 441153994}
   m_Layer: 0
-  m_Name: "Bobine \xE9lectrique"
-  m_TagString: Electric
+  m_Name: Pressure Plate
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5350588824826691078
+--- !u!4 &5381557661178523971
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5350588824826691083}
+  m_GameObject: {fileID: 5381557661178523999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.88, y: 0.56, z: 2.11}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.94, y: -0.03, z: -8.5}
+  m_LocalScale: {x: 2, y: 0.2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5350588824826691079
+--- !u!33 &5381557661178523970
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5350588824826691083}
+  m_GameObject: {fileID: 5381557661178523999}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5350588824826691076
+--- !u!23 &5381557661178523997
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5350588824826691083}
+  m_GameObject: {fileID: 5381557661178523999}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88580998b34a6f649bb078593ce23ec1, type: 2}
+  - {fileID: 2100000, guid: 21f861ea7cfc4d64484f4f305d06d7cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,30 +86,43 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5350588824826691077
+--- !u!65 &5381557661178523996
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5350588824826691083}
+  m_GameObject: {fileID: 5381557661178523999}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 0.6, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5350588824826691082
+--- !u!114 &760924073516698674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5350588824826691083}
+  m_GameObject: {fileID: 5381557661178523999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8074ff918479249409d643f6f831b008, type: 3}
+  m_Script: {fileID: 11500000, guid: 7926b02e72cc72945beca99e8b3bdc43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueMaterial: {fileID: 2100000, guid: 1a86feda849348a4db2cbf609081ff26, type: 2}
-  yellowMaterial: {fileID: 2100000, guid: 7efa7c4d2e3791f4788a9cc94f5bd58d, type: 2}
+  activatedElements:
+  - {fileID: 0}
+--- !u!65 &441153994
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5381557661178523999}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 1.8982393, z: 0.9}
+  m_Center: {x: 0, y: 0.4491195, z: 0}

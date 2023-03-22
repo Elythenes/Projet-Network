@@ -8,19 +8,19 @@ public class DazController : MonoBehaviour
 {
     #region Trucs Chelou pour les Input
 
-    private PlayerControls inputAction;
+  //  private PlayerControls inputAction;
     private PlayerInputManager inputManager;
 
     private void OnEnable()
     {
 
-        inputAction.Player.Enable();
+       // inputAction.Player.Enable();
     }
 
     private void OnDisable()
     {
 
-        inputAction.Player.Disable();
+       // inputAction.Player.Disable();
     }
 
     #endregion
@@ -39,11 +39,11 @@ public class DazController : MonoBehaviour
 
     void Awake()
     {
-        inputAction = new PlayerControls();
+       // inputAction = new PlayerControls();
 
-        inputAction.Player2.Move.performed += ctx => moveInput2 = ctx.ReadValue<Vector3>();
-        inputAction.Player2.Interact.performed += ctx => Interact();
-        inputAction.Player2.Special.performed += ctx => Special();
+       // inputAction.Player.Move.performed += ctx => moveInput2 = ctx.ReadValue<Vector3>();
+        //inputAction.Player.Interact.performed += ctx => Interact();
+        //inputAction.Player.Special.performed += ctx => Special();
 
         //inputManager.JoinPlayer(1, 0, "Keyboard2", Keyboard.current);
     }
