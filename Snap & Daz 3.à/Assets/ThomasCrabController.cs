@@ -6,13 +6,13 @@ using UnityEngine.InputSystem;
 public class ThomasCrabController : MonoBehaviour
 {
     public Crab activeCrab;
-    public Rigidbody rb;
     private bool isSnap;
-    public bool isClimbing;
+
+    public Rigidbody rb;
     
     private LayerMask ground = 3;
     
-    public Vector3 move;
+    private Vector3 move;
     public float speed;
 
     public bool canMove;
@@ -21,21 +21,15 @@ public class ThomasCrabController : MonoBehaviour
     public float rotateSpeed;
     
     public GameObject interactibleObject;
+
+    [HideInInspector] public bool canMoveBackward;
     
     public void OnMove(InputAction.CallbackContext ctx)
     {
         var x = ctx.ReadValue<Vector2>().x;
         var z = ctx.ReadValue<Vector2>().y;
 
-        if (!isClimbing)
-        {
-            move = new Vector3(x, 0f, z).normalized;      
-        }
-        else
-        {
-            move = new Vector3(x, z, 0f).normalized;      
-        }
-     
+        move = new Vector3(x, 0f, z).normalized;
     }
 
     public void OnInteract(InputAction.CallbackContext ctx)
@@ -53,8 +47,6 @@ public class ThomasCrabController : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        
         switch (activeCrab)
         {
             case Crab.Snap :
@@ -68,28 +60,35 @@ public class ThomasCrabController : MonoBehaviour
     
     void Update()
     {
-        if (!Physics.Raycast(transform.position, transform.forward - transform.up, ground))
-        {
-            move.x = Mathf.Clamp(move.x,-1f ,0f);
-            move.z = Mathf.Clamp(move.z,-1f ,0f);
-            move.y = Mathf.Clamp(move.y,-1f ,0f);
-        }
+        if (!canMove) return;
         
-        if (canRotate && move != Vector3.zero && !isClimbing)
+        if (move!= Vector3.zero)
         {
             var targetRotation = Quaternion.LookRotation(move);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
-        }
-        else if (canRotate && move != Vector3.zero && isClimbing)
-        {
-            var targetRotation = Quaternion.LookRotation(move,Vector3.back);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
-        }
 
-        if (!canMove) return;
-
-        transform.Translate(Vector3.forward * (move.magnitude * speed * Time.deltaTime), Space.Self);
-        
+            if (canRotate)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
+            }
+            
+            if (canMoveBackward)
+            {
+                Debug.DrawRay(transform.position, transform.forward * 3, Color.black);
+                Debug.DrawRay(transform.position, move * 3, Color.red);
+                if (Vector3.Angle(transform.forward, move) < 90)
+                {
+                    rb.MovePosition(transform.position + transform.forward * move.magnitude * speed * Time.deltaTime);
+                }
+                else
+                {
+                    rb.MovePosition(transform.position - transform.forward * move.magnitude * speed * Time.deltaTime);
+                }
+            }
+            else
+            {
+                rb.MovePosition(transform.position + transform.forward * move.magnitude * speed * Time.deltaTime);
+            }
+        }
     }
 
     private void Interact()

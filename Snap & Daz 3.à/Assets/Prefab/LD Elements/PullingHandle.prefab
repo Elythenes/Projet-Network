@@ -110,10 +110,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb9855b23ff28445a91c8511edfcee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usableBy: 0
+  canBeInteracted: 1
   isInteracted: 0
   actor: {fileID: 0}
-  canBeInteracted: 1
+  onlyUsableByDaz: 0
+  onlyUsableBySnap: 0
   pulledElements:
-  - {fileID: 0}
-  startingPos: []
-  direction: 4
+  - element: {fileID: 0}
+    direction: 3
+    dir: {x: 0, y: 0, z: 0}
+    startPos: {x: 0, y: 0, z: 0}
+  - element: {fileID: 0}
+    direction: 0
+    dir: {x: 0, y: 0, z: 0}
+    startPos: {x: 0, y: 0, z: 0}

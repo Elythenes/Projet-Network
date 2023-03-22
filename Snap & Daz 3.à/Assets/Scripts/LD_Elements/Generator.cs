@@ -7,7 +7,7 @@ public class Generator : Electric
     public Material blueMaterial;
     public Material yellowMaterial;
     
-    [Tooltip("Glissez tous les éléments qui sont activés par le levier")] public List<Activable> activatedElements;
+    [Tooltip("Glissez tous les éléments qui sont activés par le générateur")] public List<Activable> activatedElements;
     
     protected override void Electrify()
     {
