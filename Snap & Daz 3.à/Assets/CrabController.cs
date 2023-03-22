@@ -15,7 +15,7 @@ public class CrabController : MonoBehaviour
     [SerializeField] float rotateSpeed;
     [SerializeField] float gravityScale;
 
-    [Header("States et Références")] 
+    [Header("Stats et Références")] 
     public Vector3 moveVector;
     public bool isSnap;
     public bool interacting;
@@ -40,7 +40,7 @@ public class CrabController : MonoBehaviour
 
         if (!Physics.Raycast(transform.position, transform.forward - transform.up, ground))
         {
-            moveVector.z = Mathf.Clamp(moveVector.y, -99, 0);
+            moveVector.z = Mathf.Clamp(moveVector.x, -99, 0);
             rb.velocity = Vector3.zero;
         }
         
@@ -52,11 +52,11 @@ public class CrabController : MonoBehaviour
 
         if (canMove)
         {
-            rb.velocity = moveVector * (speed*500 * Time.deltaTime);
+            rb.velocity = moveVector * (speed*250 * Time.deltaTime);
         }
         else if (moveVector.x != 0 && moveVector.y != 0 && canMove)
         {
-            rb.velocity += (moveVector * speed / 2 * Time.deltaTime);
+            rb.velocity += (moveVector * (speed * 250) / 2 * Time.deltaTime);
         }
     }
 
