@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 871011973}
   - component: {fileID: 871011972}
   - component: {fileID: 871011971}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "Trigger Entr\xE9e/Sortie"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
