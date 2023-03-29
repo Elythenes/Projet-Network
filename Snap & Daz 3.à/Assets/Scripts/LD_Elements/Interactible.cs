@@ -11,10 +11,10 @@ public class Interactible : MonoBehaviour
 
     [HideInInspector] public GameObject actor;
 
-    [HideInInspector] public bool onlyUsableByDaz;
-    [HideInInspector] public bool onlyUsableBySnap;
+    public bool onlyUsableByDaz;
+    public bool onlyUsableBySnap;
 
-    private void Start()
+    public virtual void Start()
     {
         switch (usableBy)
         {

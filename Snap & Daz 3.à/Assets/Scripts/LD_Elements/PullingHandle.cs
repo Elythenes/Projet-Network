@@ -11,8 +11,10 @@ public class PullingHandle : Interactible
     
     private Vector3 playerDir;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
+        
         for (int i = 0; i < pulledElements.Count; i++)
         {
             pulledElements[i].dir = pulledElements[i].direction switch

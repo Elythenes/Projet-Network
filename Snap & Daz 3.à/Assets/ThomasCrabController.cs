@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class ThomasCrabController : MonoBehaviour
 {
     public Crab activeCrab;
-    private bool isSnap;
+    public bool isSnap;
     public bool isClimbing;
 
     public Rigidbody rb;
@@ -22,6 +22,7 @@ public class ThomasCrabController : MonoBehaviour
     public float rotateSpeed;
     
     public GameObject interactibleObject;
+    private Interactible interactible;
 
     [HideInInspector] public bool canMoveBackward;
     
@@ -121,10 +122,6 @@ public class ThomasCrabController : MonoBehaviour
     {
         if (interactibleObject == null) return;
 
-        var interactible = interactibleObject.GetComponent<Interactible>();
-
-        if ((interactible.onlyUsableByDaz && isSnap) || (interactible.onlyUsableBySnap && !isSnap)) return;
-
         interactible.actor = gameObject;
         interactible.Interact();
     }
@@ -134,6 +131,8 @@ public class ThomasCrabController : MonoBehaviour
         if (interactibleObject == null) return;
 
         var interactible = interactibleObject.GetComponent<Interactible>();
+        
+        if ((interactible.onlyUsableByDaz && isSnap) || (interactible.onlyUsableBySnap && !isSnap)) return;
 
         interactible.actor = null;
         interactible.StopInteract();
@@ -143,7 +142,13 @@ public class ThomasCrabController : MonoBehaviour
     {
         if (other.CompareTag("Interactible"))
         {
+            var inter = other.gameObject.GetComponent<Interactible>();
+            
+            if ((inter.onlyUsableByDaz && isSnap) || (inter.onlyUsableBySnap && !isSnap)) return;
+
             interactibleObject = other.gameObject;
+
+            interactible = inter;
         }
     }
 
@@ -151,7 +156,13 @@ public class ThomasCrabController : MonoBehaviour
     {
         if (other.CompareTag("Interactible"))
         {
+            var inter = other.gameObject.GetComponent<Interactible>();
+            
+            if ((inter.onlyUsableByDaz && isSnap) || (inter.onlyUsableBySnap && !isSnap)) return;
+            
             interactibleObject = null;
+
+            interactible = null;
         }
     }
 }
