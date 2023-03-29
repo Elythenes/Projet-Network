@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 94192249}
   - component: {fileID: 94192248}
   - component: {fileID: 94192247}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walls (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +439,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh48338
+  m_Name: pb_Mesh46554
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 382421403}
   - component: {fileID: 382421402}
   - component: {fileID: 382421401}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walls (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1303,7 +1303,7 @@ MonoBehaviour:
     m_ActionId: 2e937f2f-681b-4df8-b658-08e499ef905a
     m_ActionName: Player/Ability[/XInputControllerWindows/buttonWest]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Gamepad
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 820739327}
@@ -1320,11 +1320,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeCrab: 0
+  isClimbing: 0
+  rb: {fileID: 0}
+  move: {x: 0, y: 0, z: 0}
   speed: 7
   canMove: 1
   canRotate: 1
   rotateSpeed: 7
   interactibleObject: {fileID: 0}
+  canMoveBackward: 0
 --- !u!54 &593135734
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2270,6 +2274,14 @@ PrefabInstance:
       propertyPath: pulledElements.Array.data[0]
       value: 
       objectReference: {fileID: 1405915241}
+    - target: {fileID: 3629257178667752111, guid: 8e860d7e3df332d4d90a20b12b2a2ec3, type: 3}
+      propertyPath: pulledElements.Array.data[0].element
+      value: 
+      objectReference: {fileID: 1405915241}
+    - target: {fileID: 3629257178667752111, guid: 8e860d7e3df332d4d90a20b12b2a2ec3, type: 3}
+      propertyPath: pulledElements.Array.data[0].direction
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e860d7e3df332d4d90a20b12b2a2ec3, type: 3}
 --- !u!1 &814004318
@@ -2869,7 +2881,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh48268
+  m_Name: pb_Mesh46502
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3172,7 +3184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8882609275977487327, guid: 032d3295262efd44baa95f2442419797, type: 3}
       propertyPath: currentForce
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8882609276974517275, guid: 032d3295262efd44baa95f2442419797, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5292,11 +5304,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeCrab: 1
+  isClimbing: 0
+  rb: {fileID: 0}
+  move: {x: 0, y: 0, z: 0}
   speed: 7
   canMove: 1
   canRotate: 1
   rotateSpeed: 7
   interactibleObject: {fileID: 0}
+  canMoveBackward: 0
 --- !u!54 &1304228213
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5781,7 +5797,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh48404
+  m_Name: pb_Mesh46620
   serializedVersion: 10
   m_SubMeshes: []
   m_Shapes:
@@ -6411,7 +6427,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30312
+  m_Name: pb_Mesh46652
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6575,7 +6591,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh48232
+  m_Name: pb_Mesh46466
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7038,8 +7054,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3629257178667752111, guid: 8e860d7e3df332d4d90a20b12b2a2ec3, type: 3}
+      propertyPath: pulledElements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3629257178667752111, guid: 8e860d7e3df332d4d90a20b12b2a2ec3, type: 3}
       propertyPath: pulledElements.Array.data[0]
       value: 
       objectReference: {fileID: 1585595252}
+    - target: {fileID: 3629257178667752111, guid: 8e860d7e3df332d4d90a20b12b2a2ec3, type: 3}
+      propertyPath: pulledElements.Array.data[0].element
+      value: 
+      objectReference: {fileID: 1585595252}
+    - target: {fileID: 3629257178667752111, guid: 8e860d7e3df332d4d90a20b12b2a2ec3, type: 3}
+      propertyPath: pulledElements.Array.data[0].direction
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e860d7e3df332d4d90a20b12b2a2ec3, type: 3}
