@@ -28,7 +28,7 @@ public class Interactible : MonoBehaviour
                 break;
         }
     }
-    
+
     public virtual void Interact()
     {
         isInteracted = !isInteracted;

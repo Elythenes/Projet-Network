@@ -131,11 +131,10 @@ public class ThomasCrabController : MonoBehaviour
         if (interactibleObject == null) return;
 
         var interactible = interactibleObject.GetComponent<Interactible>();
-        
-        if ((interactible.onlyUsableByDaz && isSnap) || (interactible.onlyUsableBySnap && !isSnap)) return;
 
         interactible.actor = null;
-        interactible.StopInteract();
+        
+        if(interactible.isInteracted) interactible.StopInteract();
     }
     
     private void OnTriggerEnter(Collider other)
@@ -159,6 +158,8 @@ public class ThomasCrabController : MonoBehaviour
             var inter = other.gameObject.GetComponent<Interactible>();
             
             if ((inter.onlyUsableByDaz && isSnap) || (inter.onlyUsableBySnap && !isSnap)) return;
+            
+            if(inter.isInteracted) inter.StopInteract();
             
             interactibleObject = null;
 

@@ -67,7 +67,7 @@ public class PullingHandle : Interactible
         gameObject.transform.parent = null;
     }
 
-    void Update()
+    public void Update()
     {
         for (int i = 0; i < pulledElements.Count; i++)
         {
