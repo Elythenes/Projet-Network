@@ -8,6 +8,8 @@ public class SnapClimbing : MonoBehaviour
     [Header("Stats")]
     public float rotationSpeed;
 
+    public LayerMask layer;
+
     [Header("References")] private Rigidbody rb;
  
     private ThomasCrabController controller;
@@ -22,7 +24,7 @@ public class SnapClimbing : MonoBehaviour
     {
         Debug.DrawRay(transform.position, transform.forward * 1.5f,Color.yellow,0.5f);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit,1.5f)) // si snap rencontre un mur
+        if (Physics.Raycast(transform.position, transform.forward, out hit,1.5f, layer)) // si snap rencontre un mur
         {
 
             if (hit.collider.gameObject.transform.position.y > transform.position.y)// si snap veut monter

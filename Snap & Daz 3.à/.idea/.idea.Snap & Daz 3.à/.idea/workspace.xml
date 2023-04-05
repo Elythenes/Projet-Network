@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6309e171-ecb4-400b-99af-9f0531369aed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz 3.à/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snap &amp; Daz 3.à/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/NEW_LDElements/Ascenseur.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/NEW_LDElements/Ascenseur.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/SecurityBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LD_Elements/SecurityBlock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Tutorial_Levels.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Tutorial_Levels.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player_Related/SnapClimbing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player_Related/SnapClimbing.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +84,7 @@
       <workItem from="1678981215160" duration="955000" />
       <workItem from="1679505974078" duration="7293000" />
       <workItem from="1679851203463" duration="11000" />
-      <workItem from="1680710462125" duration="1252000" />
+      <workItem from="1680710462125" duration="1875000" />
     </task>
     <servers />
   </component>
