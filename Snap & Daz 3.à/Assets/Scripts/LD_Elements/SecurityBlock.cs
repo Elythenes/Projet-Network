@@ -17,6 +17,8 @@ public class SecurityBlock : MonoBehaviour
         if (other.CompareTag("Snap") || other.CompareTag("Daz") || other.CompareTag("Interactible"))
         {
             if (other.gameObject.transform.position.y > transform.position.y) return;
+
+            if (mEl.isActivated == true) return;
             
             objectsUnder.Add(other.gameObject);
 
@@ -36,7 +38,11 @@ public class SecurityBlock : MonoBehaviour
             if (objectsUnder.Count == 0)
             {
                 mEl.cantMove = false;
-                mEl.Desactivate();
+
+                if (mEl.isActivated == false)
+                {
+                    mEl.Desactivate();  
+                }
             }
         }
     }
